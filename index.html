@@ -498,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119'</code></pre>
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
 </div>
 </div>
 </div>
@@ -521,8 +521,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
         "enabled" : true,
         "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
         "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
+        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
         "admin_consent_granted" : true
       },
       "buildIn" : {
@@ -532,8 +532,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       "ad" : {
         "server" : null,
         "enabled" : false,
-        "network" : null,
         "defaultDomain" : null,
+        "network" : null,
         "sslEnabled" : false,
         "port" : null
       },
@@ -543,19 +543,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       }
     },
     "productsAndFeatures" : {
-      "products" : {
-        "FREEDOM" : {
-          "enabled" : true
-        }
-      },
       "features" : {
-        "PRINT_LATER" : {
+        "FREEDOM_PRINTERS" : {
           "enabled" : true,
-          "userManaged" : true
-        },
-        "VIRTUAL_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : true
+          "userManaged" : false
         },
         "PRINT_JOB_MANAGEMENT" : {
           "enabled" : true,
@@ -565,9 +556,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           "enabled" : true,
           "userManaged" : false
         },
-        "DUMMY_TEST_FEATURE" : {
-          "enabled" : false,
-          "userManaged" : false
+        "VIRTUAL_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : true
         },
         "USER_WEB_APP" : {
           "enabled" : true,
@@ -577,9 +568,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           "enabled" : false,
           "userManaged" : false
         },
-        "FREEDOM_PRINTERS" : {
+        "PRINT_LATER" : {
           "enabled" : true,
+          "userManaged" : true
+        },
+        "DUMMY_TEST_FEATURE" : {
+          "enabled" : false,
           "userManaged" : false
+        }
+      },
+      "products" : {
+        "FREEDOM" : {
+          "enabled" : true
         }
       },
       "_links" : {
@@ -596,29 +596,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541771613,
+  "version" : 1541772784,
+  "dataProcessingAmendmentAccepted" : true,
+  "clientTaskPollTimeInterval" : 30000,
+  "clientHeartbeatInterval" : 30000,
+  "mailSignature" : "Dev user\ndev@printix.net",
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
-  "clientTaskPollTimeInterval" : 30000,
-  "clientHeartbeatInterval" : 30000,
-  "clientConfigSyncInterval" : 300000,
-  "clientVersionCheckInterval" : 3600000,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "companyAddress" : null,
-  "dataProcessingAmendmentAccepted" : true,
-  "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
-  "createDefaultQueues" : true,
   "clientMigratePrintQueues" : true,
   "clientChangePrintDriver" : false,
+  "deactivatedTime" : null,
+  "clientConfigSyncInterval" : 300000,
+  "clientVersionCheckInterval" : 3600000,
+  "deletedTime" : null,
+  "printqueueNameFormat" : "SIGNID_AFTER",
   "uploadPrintAnywhere" : true,
   "uploadPrintLater" : false,
+  "createdTime" : "2018-04-18T11:22:00.239Z",
   "clientHideSignId" : false,
   "userMayAddPrinter" : true,
-  "mailSignature" : "Dev user\ndev@printix.net",
-  "createdTime" : "2018-04-18T11:22:00.239Z",
-  "deactivatedTime" : null,
+  "hostingDomains" : [ "webtest.devenv.printix.net" ],
+  "createDefaultQueues" : true,
   "name" : "Printix Webtest",
   "_links" : {
     "self" : {
@@ -772,168 +772,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantGroups</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#beers">Beer resources</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:workstations</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Curies for documentation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:queues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandUpdateWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantusers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:software</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:log</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:networks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:productsAndFeatures</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:oauthclients</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:invites</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeletePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:userTasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:auditEvents</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:toDos</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:wsCountPerOs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:csOpenTicket</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandCopyQueueConfig</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:authenticationConfiguration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandRestorePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:currentuser</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of a tenant specific version of the user performing the call(or the user the call is being performed on behalf of)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeleteWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:identityProviders</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataextract</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandAddWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:unknownNetworks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:progressingTasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printjobs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingStatus</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printerDrivers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandReleasePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataanalysis</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:driverConfigurations</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>self</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandConvertWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:discoverEnvironment</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingData</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:groupSynchronization</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:cloudStoreAccounts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the printers available to the current user (or the user the call is being performed on behalf of)</p></td>
 </tr>
 </tbody>
 </table>
@@ -944,7 +788,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 14:52:58 CET
+Last updated 2018-11-09 15:12:36 CET
 </div>
 </div>
 </body>

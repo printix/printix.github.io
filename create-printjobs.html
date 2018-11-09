@@ -585,7 +585,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119'</code></pre>
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
 </div>
 </div>
 </div>
@@ -674,7 +674,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119'</code></pre>
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
 </div>
 </div>
 </div>
@@ -697,8 +697,8 @@ a user scoped token.</p>
         "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
         "enabled" : true,
         "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
         "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
+        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
         "admin_consent_granted" : true
       },
       "buildIn" : {
@@ -708,8 +708,8 @@ a user scoped token.</p>
       "ad" : {
         "server" : null,
         "enabled" : false,
-        "network" : null,
         "defaultDomain" : null,
+        "network" : null,
         "sslEnabled" : false,
         "port" : null
       },
@@ -719,19 +719,10 @@ a user scoped token.</p>
       }
     },
     "productsAndFeatures" : {
-      "products" : {
-        "FREEDOM" : {
-          "enabled" : true
-        }
-      },
       "features" : {
-        "PRINT_LATER" : {
+        "FREEDOM_PRINTERS" : {
           "enabled" : true,
-          "userManaged" : true
-        },
-        "VIRTUAL_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : true
+          "userManaged" : false
         },
         "PRINT_JOB_MANAGEMENT" : {
           "enabled" : true,
@@ -741,9 +732,9 @@ a user scoped token.</p>
           "enabled" : true,
           "userManaged" : false
         },
-        "DUMMY_TEST_FEATURE" : {
-          "enabled" : false,
-          "userManaged" : false
+        "VIRTUAL_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : true
         },
         "USER_WEB_APP" : {
           "enabled" : true,
@@ -753,9 +744,18 @@ a user scoped token.</p>
           "enabled" : false,
           "userManaged" : false
         },
-        "FREEDOM_PRINTERS" : {
+        "PRINT_LATER" : {
           "enabled" : true,
+          "userManaged" : true
+        },
+        "DUMMY_TEST_FEATURE" : {
+          "enabled" : false,
           "userManaged" : false
+        }
+      },
+      "products" : {
+        "FREEDOM" : {
+          "enabled" : true
         }
       },
       "_links" : {
@@ -772,29 +772,29 @@ a user scoped token.</p>
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541771613,
+  "version" : 1541772784,
+  "dataProcessingAmendmentAccepted" : true,
+  "clientTaskPollTimeInterval" : 30000,
+  "clientHeartbeatInterval" : 30000,
+  "mailSignature" : "Dev user\ndev@printix.net",
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
-  "clientTaskPollTimeInterval" : 30000,
-  "clientHeartbeatInterval" : 30000,
-  "clientConfigSyncInterval" : 300000,
-  "clientVersionCheckInterval" : 3600000,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "companyAddress" : null,
-  "dataProcessingAmendmentAccepted" : true,
-  "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
-  "createDefaultQueues" : true,
   "clientMigratePrintQueues" : true,
   "clientChangePrintDriver" : false,
+  "deactivatedTime" : null,
+  "clientConfigSyncInterval" : 300000,
+  "clientVersionCheckInterval" : 3600000,
+  "deletedTime" : null,
+  "printqueueNameFormat" : "SIGNID_AFTER",
   "uploadPrintAnywhere" : true,
   "uploadPrintLater" : false,
+  "createdTime" : "2018-04-18T11:22:00.239Z",
   "clientHideSignId" : false,
   "userMayAddPrinter" : true,
-  "mailSignature" : "Dev user\ndev@printix.net",
-  "createdTime" : "2018-04-18T11:22:00.239Z",
-  "deactivatedTime" : null,
+  "hostingDomains" : [ "webtest.devenv.printix.net" ],
+  "createDefaultQueues" : true,
   "name" : "Printix Webtest",
   "_links" : {
     "self" : {
@@ -948,168 +948,12 @@ a user scoped token.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantGroups</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#beers">Beer resources</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:workstations</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Curies for documentation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:queues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandUpdateWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantusers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:software</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:log</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:networks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:productsAndFeatures</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:oauthclients</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:invites</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeletePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:userTasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:auditEvents</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:toDos</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:wsCountPerOs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:csOpenTicket</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandCopyQueueConfig</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:authenticationConfiguration</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandRestorePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:currentuser</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of a tenant specific version of the user performing the call(or the user the call is being performed on behalf of)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeleteWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:identityProviders</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataextract</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandAddWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:unknownNetworks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:progressingTasks</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printjobs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingStatus</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printerDrivers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandReleasePrintJob</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataanalysis</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:driverConfigurations</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>self</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandConvertWsQueues</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:discoverEnvironment</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingData</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:groupSynchronization</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:cloudStoreAccounts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the printers available to the current user (or the user the call is being performed on behalf of)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1128,7 +972,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119'</code></pre>
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
 </div>
 </div>
 </div>
@@ -1163,14 +1007,14 @@ a user scoped token.</p>
       }
     }
   },
-  "version" : 1541771613,
+  "version" : 1541772784,
   "userAppSettings" : {
-    "pinnedPrinterQueues" : [ ],
-    "lastUsedNetwork" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
-    "lastUsedQueue" : null,
     "lastUsedPrinter" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/0a5f5ccc-2b4a-4602-bae7-19d23616771f",
+    "pinnedPrinterQueues" : [ ],
     "pinnedPrinters" : [ "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6f7e3bf1-d5d0-408b-a542-20bab511713c" ],
+    "lastUsedNetwork" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
     "changeLogReviewDate" : "2018-09-24T12:00:00.000Z",
+    "lastUsedQueue" : null,
     "serviceMenuEnabled" : null
   },
   "inactivityAutoDelete" : false,
@@ -1216,7 +1060,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119'</code></pre>
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
 </div>
 </div>
 </div>
@@ -1230,9 +1074,9 @@ a user scoped token.</p>
       "_embedded" : {
         "printerModel" : {
           "modelName" : "Printix Anywhere",
+          "manufacturer" : "Printix",
           "colorSupport" : true,
           "duplexSupport" : true,
-          "manufacturer" : "Printix",
           "a3Support" : null,
           "scanSupport" : null,
           "tonerLevelSupport" : null,
@@ -1253,12 +1097,12 @@ a user scoped token.</p>
           },
           "version" : 4,
           "signId" : "000",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : false,
-          "alwaysReprint" : false,
           "name" : "Magnus' ANYWHERE Extravaganza",
           "active" : true,
           "_links" : {
@@ -1290,14 +1134,14 @@ a user scoped token.</p>
       "version" : 4,
       "type" : "FREEDOM",
       "ipAddress" : "",
+      "location" : null,
+      "created" : "2018-10-24T12:03:08.517Z",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "geoLocation" : null,
       "macAddress" : null,
       "serialNumber" : null,
       "signId" : "000",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "created" : "2018-10-24T12:03:08.517Z",
-      "location" : null,
       "name" : "Magnus' ANYWHERE Extravaganza",
       "_links" : {
         "px:printerModel" : {
@@ -1323,9 +1167,9 @@ a user scoped token.</p>
       "_embedded" : {
         "printerModel" : {
           "modelName" : "Printix Anywhere",
+          "manufacturer" : "Printix",
           "colorSupport" : true,
           "duplexSupport" : true,
-          "manufacturer" : "Printix",
           "a3Support" : null,
           "scanSupport" : null,
           "tonerLevelSupport" : null,
@@ -1346,12 +1190,12 @@ a user scoped token.</p>
           },
           "version" : 2,
           "signId" : "001",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : false,
-          "alwaysReprint" : false,
           "name" : "Second anywhere",
           "active" : true,
           "_links" : {
@@ -1383,14 +1227,14 @@ a user scoped token.</p>
       "version" : 2,
       "type" : "FREEDOM",
       "ipAddress" : "",
+      "location" : null,
+      "created" : "2018-10-31T08:15:48.291Z",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "geoLocation" : null,
       "macAddress" : null,
       "serialNumber" : null,
       "signId" : "001",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "created" : "2018-10-31T08:15:48.291Z",
-      "location" : null,
       "name" : "Second anywhere",
       "_links" : {
         "px:printerModel" : {
@@ -1416,9 +1260,9 @@ a user scoped token.</p>
       "_embedded" : {
         "printerModel" : {
           "modelName" : "Lexmark X792",
+          "manufacturer" : "Lexmark",
           "colorSupport" : null,
           "duplexSupport" : null,
-          "manufacturer" : "Lexmark",
           "a3Support" : null,
           "scanSupport" : null,
           "tonerLevelSupport" : null,
@@ -1449,12 +1293,12 @@ a user scoped token.</p>
           },
           "version" : 70,
           "signId" : "ASD",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : false,
-          "alwaysReprint" : false,
           "name" : "Lexmark X792",
           "active" : true,
           "_links" : {
@@ -1487,12 +1331,12 @@ a user scoped token.</p>
           },
           "version" : 70,
           "signId" : "ASD",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : false,
-          "alwaysReprint" : false,
           "name" : "Q Lexmark X792",
           "active" : false,
           "_links" : {
@@ -1524,6 +1368,10 @@ a user scoped token.</p>
       "version" : 70,
       "type" : "NETWORK",
       "ipAddress" : "192.168.1.49",
+      "location" : "",
+      "created" : "2018-09-26T10:51:11.772Z",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "geoLocation" : {
         "lat" : 55.7317475,
         "lon" : 12.4429025
@@ -1531,10 +1379,6 @@ a user scoped token.</p>
       "macAddress" : "0021B719C8F5",
       "serialNumber" : "7562479474RVN-96-0",
       "signId" : "ASD",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "created" : "2018-09-26T10:51:11.772Z",
-      "location" : "",
       "pdls" : [ "PCL5", "POSTSCRIPT", "XPS", "PDF", "PCLXL" ],
       "name" : "Lexmark X792",
       "_links" : {
@@ -1564,9 +1408,9 @@ a user scoped token.</p>
       "_embedded" : {
         "printerModel" : {
           "modelName" : "HP Officejet Color X555",
+          "manufacturer" : "HP",
           "colorSupport" : null,
           "duplexSupport" : null,
-          "manufacturer" : "HP",
           "a3Support" : null,
           "scanSupport" : null,
           "tonerLevelSupport" : null,
@@ -1597,12 +1441,12 @@ a user scoped token.</p>
           },
           "version" : 84,
           "signId" : "BNM",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : false,
-          "alwaysReprint" : false,
           "name" : "HP Officejet Color X5555",
           "active" : true,
           "_links" : {
@@ -1716,12 +1560,12 @@ a user scoped token.</p>
           },
           "version" : 84,
           "signId" : "BNM",
+          "alwaysReprint" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
           "autoUpdate" : false,
           "global" : true,
-          "alwaysReprint" : false,
           "name" : "Reproduce working on it issue",
           "active" : true,
           "_links" : {
@@ -1756,14 +1600,14 @@ a user scoped token.</p>
       "version" : 84,
       "type" : "NETWORK",
       "ipAddress" : "192.168.1.9",
+      "location" : "Office, Reception",
+      "created" : "2018-10-08T11:34:48.600Z",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "geoLocation" : null,
       "macAddress" : "F0921C637CA2",
       "serialNumber" : "CN3993Y073",
       "signId" : "BNM",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "created" : "2018-10-08T11:34:48.600Z",
-      "location" : "Office, Reception",
       "pdls" : [ "PCL5", "PCLXL", "POSTSCRIPT", "PDF" ],
       "name" : "HP Officejet Color X555",
       "_links" : {
@@ -1831,7 +1675,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs' -i -X POST \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119' \
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1' \
     -d 'jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4'</code></pre>
 </div>
@@ -1845,13 +1689,12 @@ a user scoped token.</p>
   "uploadHeaders" : {
     "x-ms-blob-type" : "BlockBlob"
   },
-  "restoreTime" : null,
-  "submitTime" : "2018-11-09T13:53:34.717202Z",
   "color" : null,
   "cloudStoreReferences" : [ {
     "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
     "directory" : "FILE_UPLOAD"
   } ],
+  "deletedTime" : null,
   "duplex" : null,
   "encryption" : null,
   "jobName" : "TestJob",
@@ -1859,6 +1702,8 @@ a user scoped token.</p>
   "pageCount" : null,
   "paperSize" : null,
   "pdl" : null,
+  "restoreTime" : null,
+  "submitTime" : "2018-11-09T14:13:05.933978Z",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1866,12 +1711,11 @@ a user scoped token.</p>
     "orientation" : "PORTRAIT",
     "paperSize" : "ISOA4"
   },
-  "deletedTime" : null,
   "pinned" : false,
   "cloudStore" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/25a9accb-e441-46ba-ad81-aa55137cab4e"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1880,10 +1724,10 @@ a user scoped token.</p>
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
     },
     "px:upload" : {
-      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/25a9accb-e441-46ba-ad81-aa55137cab4e?sig=rrUF0h1w4j%2F2V2MBh6ptxczbHo67jdbm76gLNsaAoEs%3D&amp;st=2018-11-09T13%3A38%3A34Z&amp;se=2018-11-09T14%3A53%3A34Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
+      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/47ae6e5f-e989-49de-aa92-fbd1fa22d027?sig=Mi2Lcpyi96vukrUlCKhNDlyakPq6qzDlHF%2F25%2FukIKc%3D&amp;st=2018-11-09T13%3A58%3A05Z&amp;se=2018-11-09T15%3A13%3A05Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
     },
     "px:uploadCompleted" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/25a9accb-e441-46ba-ad81-aa55137cab4e/uploadCompleted"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027/uploadCompleted"
     },
     "curies" : [ {
       "href" : "http://docs.printix.net/api/v1/rels/{rel}",
@@ -1922,8 +1766,8 @@ job is ready.</p>
 <h4 id="_request_structure_6">Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/25a9accb-e441-46ba-ad81-aa55137cab4e/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
-    -H 'Authorization: Bearer bfda1949-3c11-4616-81f1-dea1e714c119' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
+    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1'</code></pre>
 </div>
 </div>
@@ -1934,13 +1778,12 @@ job is ready.</p>
 <div class="content">
 <pre class="highlight nowrap"><code>{
   "uploadHeaders" : { },
-  "restoreTime" : null,
-  "submitTime" : "2018-11-09T13:53:34.717Z",
   "color" : null,
   "cloudStoreReferences" : [ {
     "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
     "directory" : "FILE_UPLOAD"
   } ],
+  "deletedTime" : null,
   "duplex" : null,
   "encryption" : null,
   "jobName" : "TestJob",
@@ -1948,6 +1791,8 @@ job is ready.</p>
   "pageCount" : null,
   "paperSize" : null,
   "pdl" : null,
+  "restoreTime" : null,
+  "submitTime" : "2018-11-09T14:13:05.933Z",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1955,12 +1800,11 @@ job is ready.</p>
     "orientation" : "PORTRAIT",
     "paperSize" : "ISOA4"
   },
-  "deletedTime" : null,
   "pinned" : false,
   "cloudStore" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/25a9accb-e441-46ba-ad81-aa55137cab4e"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1983,7 +1827,7 @@ job is ready.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 14:52:58 CET
+Last updated 2018-11-09 15:12:36 CET
 </div>
 </div>
 </body>
