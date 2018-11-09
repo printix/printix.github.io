@@ -5,7 +5,6 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<meta name="author" content="Gerrit Meier">
 <title>Printix API</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -422,9 +421,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <body class="book toc2 toc-left">
 <div id="header">
 <h1>Printix API</h1>
-<div class="details">
-<span id="author" class="author">Gerrit Meier</span><br>
-</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
@@ -465,24 +461,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_response_structure">Response structure</h3>
 <div class="paragraph">
-<p>Unresolved directive in index.adoc - include::/var/jenkins_home/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/response-fields.adoc[]</p>
+<p>Unresolved directive in index.adoc - include::/var/lib/jenkins/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/response-fields.adoc[]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="index-links-links">Links</h3>
 <div class="paragraph">
-<p>Unresolved directive in index.adoc - include::/var/jenkins_home/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/links.adoc[]</p>
+<p>Unresolved directive in index.adoc - include::/var/lib/jenkins/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/links.adoc[]</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_request">Request</h3>
 <div class="paragraph">
-<p>Unresolved directive in index.adoc - include::/var/jenkins_home/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/curl-request.adoc[]</p>
+<p>Unresolved directive in index.adoc - include::/var/lib/jenkins/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/curl-request.adoc[]</p>
 </div>
 <div class="sect3">
 <h4 id="_response">Response</h4>
 <div class="paragraph">
-<p>Unresolved directive in index.adoc - include::/var/jenkins_home/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/http-response.adoc[]</p>
+<p>Unresolved directive in index.adoc - include::/var/lib/jenkins/jobs/DeploymentPipelines/jobs/API Documentation/workspace/apidocs-build/target/generated-snippets/index-links/http-response.adoc[]</p>
 </div>
 </div>
 </div>
@@ -502,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 2848e16f-b069-4e7a-90e5-4ae534e39b3b'</code></pre>
+    -H 'Authorization: Bearer 595a2d1b-b410-4764-b565-1eaf1b4e2687'</code></pre>
 </div>
 </div>
 </div>
@@ -513,23 +509,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <pre class="highlight nowrap"><code>{
   "_embedded" : {
     "authenticationConfiguration" : {
-      "links" : [ {
-        "rel" : "self",
-        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
-      }, {
-        "rel" : "testAdConfig",
-        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig/testAdConfig"
-      } ],
+      "_links" : {
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
+        },
+        "px:testAdConfig" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig/testAdConfig"
+        }
+      },
       "buildIn" : {
-        "selfRegistrationAllowed" : false,
-        "allowedEmailDomains" : [ ]
+        "allowedEmailDomains" : [ ],
+        "selfRegistrationAllowed" : false
       },
       "ad" : {
-        "network" : null,
-        "sslEnabled" : false,
         "server" : null,
-        "defaultDomain" : null,
         "enabled" : false,
+        "defaultDomain" : null,
+        "sslEnabled" : false,
+        "network" : null,
         "port" : null
       },
       "azureAD" : {
@@ -538,37 +535,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       },
       "MSIdentity" : {
         "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
-        "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
         "enabled" : true,
-        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
+        "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
         "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
+        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
         "admin_consent_granted" : true
       }
     },
     "productsAndFeatures" : {
+      "products" : {
+        "FREEDOM" : {
+          "enabled" : true
+        }
+      },
       "features" : {
-        "PRINT_LATER" : {
-          "enabled" : true,
-          "userManaged" : true
-        },
-        "PRINT_JOB_RELAY" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_UPLOAD" : {
-          "enabled" : false,
-          "userManaged" : false
-        },
         "DUMMY_TEST_FEATURE" : {
           "enabled" : false,
-          "userManaged" : false
-        },
-        "PRINT_JOB_MANAGEMENT" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "FREEDOM_PRINTERS" : {
-          "enabled" : true,
           "userManaged" : false
         },
         "VIRTUAL_PRINTERS" : {
@@ -578,174 +560,199 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "USER_WEB_APP" : {
           "enabled" : true,
           "userManaged" : false
+        },
+        "PRINT_LATER" : {
+          "enabled" : true,
+          "userManaged" : true
+        },
+        "PRINT_JOB_MANAGEMENT" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "FREEDOM_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "PRINT_JOB_UPLOAD" : {
+          "enabled" : false,
+          "userManaged" : false
+        },
+        "PRINT_JOB_RELAY" : {
+          "enabled" : true,
+          "userManaged" : false
         }
       },
-      "products" : {
-        "FREEDOM" : {
-          "enabled" : true
+      "_links" : {
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
+        },
+        "px:printLaterConfig" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printLaterConfig"
         }
-      },
-      "links" : [ {
-        "rel" : "self",
-        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
-      }, {
-        "rel" : "printLaterConfig",
-        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printLaterConfig"
-      } ]
+      }
     }
   },
   "azureEnabled" : true,
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
-  "wsEndpoint" : "ws://192.168.1.138:8080/ws",
-  "version" : 1532612866,
+  "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
+  "version" : 1541742148,
+  "companyAddress" : null,
+  "mailSignature" : "Dev user\ndev@printix.net",
+  "createdTime" : "2018-04-18T11:22:00.239Z",
+  "deactivatedTime" : null,
+  "printqueueNameFormat" : "SIGNID_AFTER",
+  "createDefaultQueues" : true,
+  "dataProcessingAmendmentAccepted" : true,
   "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
-  "companyAddress" : null,
   "clientTaskPollTimeInterval" : 30000,
   "clientHeartbeatInterval" : 30000,
   "clientConfigSyncInterval" : 300000,
   "clientVersionCheckInterval" : 3600000,
   "clientMigratePrintQueues" : true,
   "clientChangePrintDriver" : false,
-  "uploadPrintAnywhere" : false,
-  "uploadPrintLater" : true,
-  "clientHideSignId" : true,
+  "uploadPrintAnywhere" : true,
+  "uploadPrintLater" : false,
+  "clientHideSignId" : false,
   "userMayAddPrinter" : true,
-  "mailSignature" : "Dev user\ndev@printix.net",
-  "createdTime" : 1.524050520239E9,
-  "deactivatedTime" : null,
   "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
-  "createDefaultQueues" : true,
-  "dataProcessingAmendmentAccepted" : true,
   "name" : "Printix Webtest",
-  "links" : [ {
-    "rel" : "self",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
-  }, {
-    "rel" : "discoverEnvironment",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/discoverEnvironment"
-  }, {
-    "rel" : "log",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/log"
-  }, {
-    "rel" : "printers",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers"
-  }, {
-    "rel" : "driverConfigurations",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs"
-  }, {
-    "rel" : "workstations",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations"
-  }, {
-    "rel" : "tenantusers",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users"
-  }, {
-    "rel" : "invites",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/invites"
-  }, {
-    "rel" : "queues",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/queues"
-  }, {
-    "rel" : "printjobs",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs"
-  }, {
-    "rel" : "userTasks",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/usertasks"
-  }, {
-    "rel" : "commandReleasePrintJob",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/release"
-  }, {
-    "rel" : "commandDeletePrintJob",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/delete"
-  }, {
-    "rel" : "commandRestorePrintJob",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/restore"
-  }, {
-    "rel" : "commandAddWsQueues",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/queue/add"
-  }, {
-    "rel" : "commandDeleteWsQueues",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/deleteQueue"
-  }, {
-    "rel" : "commandUpdateWsQueues",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/updateQueue"
-  }, {
-    "rel" : "commandConvertWsQueues",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/convertQueues"
-  }, {
-    "rel" : "commandCopyQueueConfig",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/copyQueueConfig"
-  }, {
-    "rel" : "printerDrivers",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers"
-  }, {
-    "rel" : "auditEvents",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/auditEvents?page=0"
-  }, {
-    "rel" : "csOpenTicket",
-    "href" : "https://api.devenv.printix.net/v1/customerService/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/ticket"
-  }, {
-    "rel" : "software",
-    "href" : "https://api.devenv.printix.net/v1/software/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
-  }, {
-    "rel" : "dataanalysis",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/"
-  }, {
-    "rel" : "progressingTasks",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/tasks/allProgressing"
-  }, {
-    "rel" : "networks",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks"
-  }, {
-    "rel" : "unknownNetworks",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findUnknownNetworks"
-  }, {
-    "rel" : "currentuser",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me"
-  }, {
-    "rel" : "toDos",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/toDos"
-  }, {
-    "rel" : "authenticationConfiguration",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
-  }, {
-    "rel" : "identityProviders",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/identity-providers/"
-  }, {
-    "rel" : "dataextract",
-    "href" : "https://api.devenv.printix.net/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataextract"
-  }, {
-    "rel" : "oauthclients",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/oauthclients"
-  }, {
-    "rel" : "productsAndFeatures",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
-  }, {
-    "rel" : "wsCountPerOs",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findWsCountPerOs"
-  }, {
-    "rel" : "tasks",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/internal/tasks"
-  }, {
-    "rel" : "groupSynchronization",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/synchronization"
-  }, {
-    "rel" : "cloudStoreAccounts",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/cloudStoreAccounts"
-  }, {
-    "rel" : "tenantGroups",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups?queueFilterMode=PRESENT_ON_ANY"
-  }, {
-    "rel" : "billingData",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingData"
-  }, {
-    "rel" : "billingStatus",
-    "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingStatus"
-  } ]
+  "_links" : {
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
+    },
+    "px:discoverEnvironment" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/discoverEnvironment"
+    },
+    "px:log" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/log"
+    },
+    "px:printers" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers"
+    },
+    "px:driverConfigurations" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs"
+    },
+    "px:workstations" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations"
+    },
+    "px:tenantusers" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users"
+    },
+    "px:invites" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/invites"
+    },
+    "px:queues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/queues"
+    },
+    "px:printjobs" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs"
+    },
+    "px:userTasks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/usertasks"
+    },
+    "px:commandReleasePrintJob" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/release"
+    },
+    "px:commandDeletePrintJob" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/delete"
+    },
+    "px:commandRestorePrintJob" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/restore"
+    },
+    "px:commandAddWsQueues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/queue/add"
+    },
+    "px:commandDeleteWsQueues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/deleteQueue"
+    },
+    "px:commandUpdateWsQueues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/updateQueue"
+    },
+    "px:commandConvertWsQueues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/convertQueues"
+    },
+    "px:commandCopyQueueConfig" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/copyQueueConfig"
+    },
+    "px:printerDrivers" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers"
+    },
+    "px:auditEvents" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/auditEvents?page=0"
+    },
+    "px:csOpenTicket" : {
+      "href" : "https://api.devenv.printix.net/v1/customerService/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/ticket"
+    },
+    "px:software" : {
+      "href" : "https://api.devenv.printix.net/v1/software/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
+    },
+    "px:dataanalysis" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/"
+    },
+    "px:progressingTasks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/tasks/allProgressing"
+    },
+    "px:networks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks"
+    },
+    "px:unknownNetworks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findUnknownNetworks"
+    },
+    "px:currentuser" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me"
+    },
+    "px:toDos" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/toDos"
+    },
+    "px:authenticationConfiguration" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
+    },
+    "px:identityProviders" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/identity-providers/"
+    },
+    "px:dataextract" : {
+      "href" : "https://api.devenv.printix.net/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataextract"
+    },
+    "px:oauthclients" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/oauthclients"
+    },
+    "px:productsAndFeatures" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
+    },
+    "px:wsCountPerOs" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findWsCountPerOs"
+    },
+    "px:tasks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/internal/tasks"
+    },
+    "px:groupSynchronization" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/synchronization"
+    },
+    "px:cloudStoreAccounts" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/cloudStoreAccounts"
+    },
+    "px:batch" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/batch"
+    },
+    "px:tenantGroups" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups?inUse=true"
+    },
+    "px:billingData" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingData"
+    },
+    "px:billingStatus" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingStatus"
+    },
+    "curies" : [ {
+      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
+      "name" : "px",
+      "templated" : true
+    } ]
+  }
 }</code></pre>
 </div>
 </div>
@@ -765,143 +772,143 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tenantGroups</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantGroups</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#beers">Beer resources</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workstations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:workstations</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Curies for documentation</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>queues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:queues</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandUpdateWsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandUpdateWsQueues</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tenantusers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tenantusers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>software</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:software</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>log</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:log</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>networks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:networks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>productsAndFeatures</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:productsAndFeatures</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>oauthclients</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:oauthclients</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invites</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:invites</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandDeletePrintJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeletePrintJob</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>userTasks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:userTasks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>auditEvents</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:auditEvents</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toDos</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:toDos</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wsCountPerOs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:wsCountPerOs</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>csOpenTicket</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:csOpenTicket</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandCopyQueueConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandCopyQueueConfig</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>authenticationConfiguration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:authenticationConfiguration</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tasks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:tasks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandRestorePrintJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandRestorePrintJob</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>currentuser</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:currentuser</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandDeleteWsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandDeleteWsQueues</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>identityProviders</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:identityProviders</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dataextract</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataextract</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandAddWsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandAddWsQueues</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unknownNetworks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:unknownNetworks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>progressingTasks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:progressingTasks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printjobs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printjobs</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>billingStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingStatus</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printerDrivers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printerDrivers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandReleasePrintJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandReleasePrintJob</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dataanalysis</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:dataanalysis</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>driverConfigurations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:driverConfigurations</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
@@ -909,23 +916,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>commandConvertWsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:commandConvertWsQueues</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>discoverEnvironment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:discoverEnvironment</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>billingData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:billingData</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>groupSynchronization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:groupSynchronization</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudStoreAccounts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:cloudStoreAccounts</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ALPS profile for the service</p></td>
 </tr>
 </tbody>
@@ -937,7 +944,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-26 13:47:34 UTC
+Last updated 2018-11-09 06:42:14 CET
 </div>
 </div>
 </body>
