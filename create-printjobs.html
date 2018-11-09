@@ -425,36 +425,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#tenant-get">Get tenant</a>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#available-tenants">Get tenants</a>
 <ul class="sectlevel2">
 <li><a href="#_request_structure">Request structure</a></li>
 <li><a href="#_response_structure">Response structure</a></li>
+</ul>
+</li>
+<li><a href="#tenant-get">Get tenant</a>
+<ul class="sectlevel2">
+<li><a href="#_request_structure_2">Request structure</a></li>
+<li><a href="#_response_structure_2">Response structure</a></li>
 <li><a href="#_links">Links</a></li>
 </ul>
 </li>
 <li><a href="#user-get">Getting the current user</a>
 <ul class="sectlevel3">
-<li><a href="#_request_structure_2">Request structure</a></li>
-<li><a href="#_response_structure_2">Response structure</a></li>
-</ul>
-</li>
-<li><a href="#printers-get">Getting avaiable printers</a>
-<ul class="sectlevel3">
 <li><a href="#_request_structure_3">Request structure</a></li>
 <li><a href="#_response_structure_3">Response structure</a></li>
 </ul>
 </li>
-<li><a href="#create-job">Create Printjob</a>
+<li><a href="#printers-get">Getting avaiable printers</a>
 <ul class="sectlevel3">
 <li><a href="#_request_structure_4">Request structure</a></li>
 <li><a href="#_response_structure_4">Response structure</a></li>
 </ul>
 </li>
-<li><a href="#upload-job-data">Upload Job data</a></li>
-<li><a href="#finalize-upload">Finalize upload</a>
+<li><a href="#create-job">Create Printjob</a>
 <ul class="sectlevel3">
 <li><a href="#_request_structure_5">Request structure</a></li>
 <li><a href="#_response_structure_5">Response structure</a></li>
+</ul>
+</li>
+<li><a href="#upload-job-data">Upload Job data</a></li>
+<li><a href="#finalize-upload">Finalize upload</a>
+<ul class="sectlevel3">
+<li><a href="#_request_structure_6">Request structure</a></li>
+<li><a href="#_response_structure_6">Response structure</a></li>
 </ul>
 </li>
 </ul>
@@ -466,7 +473,99 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>Printjobs belong to a given user on a specific tenant, as such, when creating
-printjobs, we begin traversing the api from the Tenant resource.</p>
+printjobs, we begin traversing the api from the list of tenants accessible to the current user.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authentication">Authentication</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="available-tenants">Get tenants</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_structure">Request structure</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/users/me' -i -X GET \
+    -H 'Accept: application/json' \
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_response_structure">Response structure</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "_embedded" : {
+    "tenants" : [ {
+      "_links" : {
+        "px:tenant" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
+        },
+        "px:tenant-user" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+        }
+      },
+      "role" : "SYSTEM_MANAGER",
+      "name" : "Printix Webtest",
+      "hostingDomain" : "webtest.devenv.printix.net"
+    }, {
+      "_links" : {
+        "px:tenant" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/e825f25b-056b-4e66-b3b6-3558f522f286"
+        },
+        "px:tenant-user" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/e825f25b-056b-4e66-b3b6-3558f522f286/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+        }
+      },
+      "role" : "SYSTEM_MANAGER",
+      "name" : "xoxo",
+      "hostingDomain" : "xoxo.devenv.printix.net"
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/users/me"
+    },
+    "px:user" : {
+      "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+    }
+  },
+  "name" : "Dev user",
+  "email" : "dev@printix.net",
+  "tenants" : [ {
+    "_links" : {
+      "px:tenant" : {
+        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
+      },
+      "px:tenant-user" : {
+        "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+      }
+    },
+    "role" : "SYSTEM_MANAGER",
+    "name" : "Printix Webtest",
+    "hostingDomain" : "webtest.devenv.printix.net"
+  }, {
+    "_links" : {
+      "px:tenant" : {
+        "href" : "https://api.devenv.printix.net/v1/tenants/e825f25b-056b-4e66-b3b6-3558f522f286"
+      },
+      "px:tenant-user" : {
+        "href" : "https://api.devenv.printix.net/v1/tenants/e825f25b-056b-4e66-b3b6-3558f522f286/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+      }
+    },
+    "role" : "SYSTEM_MANAGER",
+    "name" : "xoxo",
+    "hostingDomain" : "xoxo.devenv.printix.net"
+  } ]
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -474,20 +573,20 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
 <h2 id="tenant-get">Get tenant</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is how you will get a tenant.</p>
+<p>Next, we fetch the specific tenant, on which we want to create the printjob(s)</p>
 </div>
 <div class="sect2">
-<h3 id="_request_structure">Request structure</h3>
+<h3 id="_request_structure_2">Request structure</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b'</code></pre>
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_response_structure">Response structure</h3>
+<h3 id="_response_structure_2">Response structure</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -580,7 +679,7 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541742308,
+  "version" : 1541742838,
   "companyAddress" : null,
   "mailSignature" : "Dev user\ndev@printix.net",
   "createdTime" : "2018-04-18T11:22:00.239Z",
@@ -931,17 +1030,17 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
 <p>Next we get the user we want to create jobs for:</p>
 </div>
 <div class="sect3">
-<h4 id="_request_structure_2">Request structure</h4>
+<h4 id="_request_structure_3">Request structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b'</code></pre>
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_structure_2">Response structure</h4>
+<h4 id="_response_structure_3">Response structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -971,7 +1070,7 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
       }
     }
   },
-  "version" : 1541742308,
+  "version" : 1541742838,
   "userAppSettings" : {
     "pinnedPrinters" : [ "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6f7e3bf1-d5d0-408b-a542-20bab511713c" ],
     "pinnedPrinterQueues" : [ ],
@@ -1019,17 +1118,17 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
 <p>And the avaiable Printers and queues</p>
 </div>
 <div class="sect3">
-<h4 id="_request_structure_3">Request structure</h4>
+<h4 id="_request_structure_4">Request structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b'</code></pre>
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_structure_3">Response structure</h4>
+<h4 id="_response_structure_4">Response structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1634,19 +1733,19 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
 <p>Creating the job, is a simple form post</p>
 </div>
 <div class="sect3">
-<h4 id="_request_structure_4">Request structure</h4>
+<h4 id="_request_structure_5">Request structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs' -i -X POST \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b' \
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1' \
     -d 'jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_structure_4">Response structure</h4>
+<h4 id="_response_structure_5">Response structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -1655,7 +1754,7 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
   },
   "color" : null,
   "pdl" : null,
-  "submitTime" : "2018-11-09T05:45:09.204777Z",
+  "submitTime" : "2018-11-09T05:53:59.338375Z",
   "restoreTime" : null,
   "jobState" : "UPLOADING",
   "deletedTime" : null,
@@ -1679,7 +1778,7 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
   } ],
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/621bc05d-af5d-4b17-9b1f-c22badca3312"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1688,10 +1787,10 @@ printjobs, we begin traversing the api from the Tenant resource.</p>
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
     },
     "px:upload" : {
-      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/56a01ef3-532c-4672-8a57-5cead1d8c2fd?sig=FxW5iaOErB1y6iO0BPpXrwyBhr3hqZ7wMRsxEJZJBc0%3D&amp;st=2018-11-09T05%3A30%3A09Z&amp;se=2018-11-09T06%3A45%3A09Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
+      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/621bc05d-af5d-4b17-9b1f-c22badca3312?sig=0Scxd8GczMKlJH%2BqttsRwjcliBiOQ8mM6JEAZa4gdB8%3D&amp;st=2018-11-09T05%3A38%3A59Z&amp;se=2018-11-09T06%3A53%3A59Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
     },
     "px:uploadCompleted" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd/uploadCompleted"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/621bc05d-af5d-4b17-9b1f-c22badca3312/uploadCompleted"
     },
     "curies" : [ {
       "href" : "http://docs.printix.net/api/v1/rels/{rel}",
@@ -1727,24 +1826,24 @@ The data is uploaded by PUTting to the url in the link, with the headers from up
 job is ready.</p>
 </div>
 <div class="sect3">
-<h4 id="_request_structure_5">Request structure</h4>
+<h4 id="_request_structure_6">Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
-    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/621bc05d-af5d-4b17-9b1f-c22badca3312/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
+    -H 'Authorization: Bearer 6af4b282-4213-4073-96dc-40d3883069a9' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_structure_5">Response structure</h4>
+<h4 id="_response_structure_6">Response structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
   "uploadHeaders" : { },
   "color" : null,
   "pdl" : null,
-  "submitTime" : "2018-11-09T05:45:09.204Z",
+  "submitTime" : "2018-11-09T05:53:59.338Z",
   "restoreTime" : null,
   "jobState" : "CONVERTING",
   "deletedTime" : null,
@@ -1768,7 +1867,7 @@ job is ready.</p>
   } ],
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/621bc05d-af5d-4b17-9b1f-c22badca3312"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1791,7 +1890,7 @@ job is ready.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 06:44:55 CET
+Last updated 2018-11-09 06:53:45 CET
 </div>
 </div>
 </body>
