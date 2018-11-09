@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>Tenants</title>
+<title>Creating Printjobs</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -416,21 +416,68 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
+<h1>Creating Printjobs</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#tenant-get">Get tenant</a>
+<ul class="sectlevel2">
+<li><a href="#_request_structure">Request structure</a></li>
+<li><a href="#_response_structure">Response structure</a></li>
+<li><a href="#_links">Links</a></li>
+</ul>
+</li>
+<li><a href="#user-get">Getting the current user</a>
+<ul class="sectlevel3">
+<li><a href="#_request_structure_2">Request structure</a></li>
+<li><a href="#_response_structure_2">Response structure</a></li>
+</ul>
+</li>
+<li><a href="#printers-get">Getting avaiable printers</a>
+<ul class="sectlevel3">
+<li><a href="#_request_structure_3">Request structure</a></li>
+<li><a href="#_response_structure_3">Response structure</a></li>
+</ul>
+</li>
+<li><a href="#create-job">Create Printjob</a>
+<ul class="sectlevel3">
+<li><a href="#_request_structure_4">Request structure</a></li>
+<li><a href="#_response_structure_4">Response structure</a></li>
+</ul>
+</li>
+<li><a href="#upload-job-data">Upload Job data</a></li>
+<li><a href="#finalize-upload">Finalize upload</a>
+<ul class="sectlevel3">
+<li><a href="#_request_structure_5">Request structure</a></li>
+<li><a href="#_response_structure_5">Response structure</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_tenants">Tenants</h2>
+<h2 id="introduction">Introduction</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="tenant-get">Get tenant</h3>
+<div class="paragraph">
+<p>Printjobs belong to a given user on a specific tenant, as such, when creating
+printjobs, we begin traversing the api from the Tenant resource.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tenant-get">Get tenant</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>This is how you will get a tenant.</p>
 </div>
-<div class="sect3">
-<h4 id="_request_structure">Request structure</h4>
+<div class="sect2">
+<h3 id="_request_structure">Request structure</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
@@ -439,8 +486,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_response_structure">Response structure</h4>
+<div class="sect2">
+<h3 id="_response_structure">Response structure</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
@@ -694,8 +741,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_links">Links</h4>
+<div class="sect2">
+<h3 id="_links">Links</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -874,6 +921,869 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-get">Getting the current user</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next we get the user we want to create jobs for:</p>
+</div>
+<div class="sect3">
+<h4 id="_request_structure_2">Request structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me' -i -X GET \
+    -H 'Accept: application/json' \
+    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_2">Response structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "_embedded" : {
+    "external-ids" : [ ],
+    "permissions" : {
+      "permissions" : [ "RESOURCE_RELEASE_CREATE", "RESOURCE_DRIVER_CONFIG_CREATE", "RESOURCE_DRIVER_CONFIG_DELETE", "RESOURCE_DRIVER_CONFIG_UPDATE", "RESOURCE_DRIVER_CONFIG_LIST", "RESOURCE_NETWORK_CREATE", "RESOURCE_NETWORK_DELETE", "RESOURCE_NETWORK_UPDATE", "RESOURCE_NETWORK_LIST", "RESOURCE_PRINTER_ACTIVE", "RESOURCE_PRINTER_CREATE", "RESOURCE_PRINTER_DELETE", "RESOURCE_PRINTER_UPDATE", "RESOURCE_PRINTJOB_CREATE", "RESOURCE_WORKSTATION_CREATE", "RESOURCE_WORKSTATION_DELETE", "RESOURCE_WORKSTATION_UPDATE", "RESOURCE_WORKSTATION_LIST", "RESOURCE_USER_TASK_CREATE", "RESOURCE_USER_TASK_DELETE", "RESOURCE_USER_TASK_UPDATE", "RESOURCE_USER_TASK_LIST", "RESOURCE_WORKSTATION_ADD_QUEUE", "RESOURCE_WORKSTATION_DELETE_QUEUE", "RESOURCE_WORKSTATION_UPDATE_QUEUE", "RESOURCE_TENANT_DELETE", "RESOURCE_TENANT_UPDATE", "RESOURCE_TENANT_AUTH_CONFIG_READ", "RESOURCE_TENANT_AUTH_CONFIG_UPDATE", "RESOURCE_TENANT_BILLING_DATA_READ", "RESOURCE_TENANT_BILLING_DATA_UPDATE", "RESOURCE_USER_UPDATE", "ACCESS_CHANGE_ROLE", "ACCESS_GRANT", "ACCESS_REVOKE", "PRINT_ID_SIGN", "APP_SUPER_USER_MENU", "INACTIVE_PRINTER_USE_ALLOWED", "ADMIN_LOGIN", "AUDIT_READ", "ISSUE_CLIENT_CREDENTIALS" ],
+      "role" : "SYSTEM_MANAGER",
+      "_links" : {
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/permissions"
+        }
+      }
+    },
+    "authentication_details" : {
+      "source" : "EMAIL",
+      "principal" : "dev@printix.net"
+    },
+    "user" : {
+      "email" : "dev@printix.net",
+      "name" : "Dev user",
+      "language" : "en",
+      "_links" : {
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+        }
+      }
+    }
+  },
+  "version" : 1541742308,
+  "userAppSettings" : {
+    "pinnedPrinters" : [ "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6f7e3bf1-d5d0-408b-a542-20bab511713c" ],
+    "pinnedPrinterQueues" : [ ],
+    "changeLogReviewDate" : "2018-09-24T12:00:00.000Z",
+    "serviceMenuEnabled" : null,
+    "lastUsedNetwork" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
+    "lastUsedPrinter" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/0a5f5ccc-2b4a-4602-bae7-19d23616771f",
+    "lastUsedQueue" : null
+  },
+  "inactivityAutoDelete" : false,
+  "emailOptOuts" : [ ],
+  "_links" : {
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+    },
+    "px:printjobs" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs"
+    },
+    "px:auditEvents" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/auditEvents?page=0{&amp;pageSize,startTime,endTime}",
+      "templated" : true
+    },
+    "px:groups" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/groups"
+    },
+    "px:permissions" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/permissions"
+    },
+    "curies" : [ {
+      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
+      "name" : "px",
+      "templated" : true
+    } ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="printers-get">Getting avaiable printers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>And the avaiable Printers and queues</p>
+</div>
+<div class="sect3">
+<h4 id="_request_structure_3">Request structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers' -i -X GET \
+    -H 'Accept: application/json' \
+    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_3">Response structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "_embedded" : {
+    "printers" : [ {
+      "_embedded" : {
+        "printerModel" : {
+          "scanSupport" : null,
+          "monoSpeedPPM" : null,
+          "colorSpeedPPM" : null,
+          "wattPrint" : null,
+          "wattReady" : null,
+          "manufacturer" : "Printix",
+          "modelName" : "Printix Anywhere",
+          "wattSleep" : null,
+          "colorSupport" : true,
+          "duplexSupport" : true,
+          "tonerLevelSupport" : null,
+          "a3Support" : null,
+          "_links" : {
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
+            }
+          }
+        },
+        "queues" : [ {
+          "_embedded" : {
+            "driversAndConfigs" : [ ]
+          },
+          "version" : 4,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : false,
+          "signId" : "000",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "Magnus' ANYWHERE Extravaganza",
+          "active" : true,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues/df6c372c-77f5-471a-9746-92976ac8ff05"
+            }
+          }
+        } ]
+      },
+      "version" : 4,
+      "type" : "FREEDOM",
+      "ipAddress" : "",
+      "location" : null,
+      "serialNumber" : null,
+      "signId" : "000",
+      "colorSupport" : true,
+      "duplexSupport" : true,
+      "created" : "2018-10-24T12:03:08.517Z",
+      "geoLocation" : null,
+      "macAddress" : null,
+      "name" : "Magnus' ANYWHERE Extravaganza",
+      "_links" : {
+        "px:printerModel" : {
+          "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
+        },
+        "px:auditEvents" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/auditEvents?page=0"
+        },
+        "px:rawdata" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+        },
+        "px:queues" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9/queues"
+        },
+        "px:editsuggestions" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/editsuggestions/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+        },
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+        }
+      }
+    }, {
+      "_embedded" : {
+        "printerModel" : {
+          "scanSupport" : null,
+          "monoSpeedPPM" : null,
+          "colorSpeedPPM" : null,
+          "wattPrint" : null,
+          "wattReady" : null,
+          "manufacturer" : "Printix",
+          "modelName" : "Printix Anywhere",
+          "wattSleep" : null,
+          "colorSupport" : true,
+          "duplexSupport" : true,
+          "tonerLevelSupport" : null,
+          "a3Support" : null,
+          "_links" : {
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
+            }
+          }
+        },
+        "queues" : [ {
+          "_embedded" : {
+            "driversAndConfigs" : [ ]
+          },
+          "version" : 2,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : false,
+          "signId" : "001",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "Second anywhere",
+          "active" : true,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues/f87c0975-4f20-4aff-87d0-13f20d58b1ec"
+            }
+          }
+        } ]
+      },
+      "version" : 2,
+      "type" : "FREEDOM",
+      "ipAddress" : "",
+      "location" : null,
+      "serialNumber" : null,
+      "signId" : "001",
+      "colorSupport" : true,
+      "duplexSupport" : true,
+      "created" : "2018-10-31T08:15:48.291Z",
+      "geoLocation" : null,
+      "macAddress" : null,
+      "name" : "Second anywhere",
+      "_links" : {
+        "px:printerModel" : {
+          "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
+        },
+        "px:auditEvents" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/auditEvents?page=0"
+        },
+        "px:rawdata" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/printers/c432f777-9680-42c6-855d-936f6682f9e3"
+        },
+        "px:queues" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3/queues"
+        },
+        "px:editsuggestions" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/editsuggestions/printers/c432f777-9680-42c6-855d-936f6682f9e3"
+        },
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3"
+        }
+      }
+    }, {
+      "_embedded" : {
+        "printerModel" : {
+          "scanSupport" : null,
+          "monoSpeedPPM" : null,
+          "colorSpeedPPM" : null,
+          "wattPrint" : null,
+          "wattReady" : null,
+          "manufacturer" : "Lexmark",
+          "modelName" : "Lexmark X792",
+          "wattSleep" : null,
+          "colorSupport" : null,
+          "duplexSupport" : null,
+          "tonerLevelSupport" : null,
+          "a3Support" : null,
+          "_links" : {
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/printermodels/18789"
+            }
+          }
+        },
+        "queues" : [ {
+          "_embedded" : {
+            "driversAndConfigs" : [ {
+              "os" : "WIN_10_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/38869"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/driversAndConfigs/WIN_10_64"
+                }
+              }
+            } ]
+          },
+          "version" : 70,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : false,
+          "signId" : "ASD",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "Lexmark X792",
+          "active" : true,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/0aefee9a-528e-42be-b00d-a99a61090ab4"
+            }
+          }
+        }, {
+          "_embedded" : {
+            "driversAndConfigs" : [ ]
+          },
+          "version" : 70,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : false,
+          "signId" : "ASD",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "Q Lexmark X792",
+          "active" : false,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues/46b35ba5-527c-4e6d-a829-831b25f2919e"
+            }
+          }
+        } ]
+      },
+      "version" : 70,
+      "type" : "NETWORK",
+      "ipAddress" : "192.168.1.49",
+      "pdls" : [ "PCL5", "POSTSCRIPT", "XPS", "PDF", "PCLXL" ],
+      "location" : "",
+      "serialNumber" : "7562479474RVN-96-0",
+      "signId" : "ASD",
+      "colorSupport" : true,
+      "duplexSupport" : true,
+      "created" : "2018-09-26T10:51:11.772Z",
+      "geoLocation" : {
+        "lat" : 55.7317475,
+        "lon" : 12.4429025
+      },
+      "macAddress" : "0021B719C8F5",
+      "name" : "Lexmark X792",
+      "_links" : {
+        "px:printerModel" : {
+          "href" : "https://api.devenv.printix.net/v1/printermodels/18789"
+        },
+        "px:network" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/6ea5b0ae-d4fa-4c2c-981d-d5964c1891d5"
+        },
+        "px:auditEvents" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/auditEvents?page=0"
+        },
+        "px:rawdata" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+        },
+        "px:queues" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b/queues"
+        },
+        "px:editsuggestions" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/editsuggestions/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+        },
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+        }
+      }
+    }, {
+      "_embedded" : {
+        "printerModel" : {
+          "scanSupport" : null,
+          "monoSpeedPPM" : null,
+          "colorSpeedPPM" : null,
+          "wattPrint" : null,
+          "wattReady" : null,
+          "manufacturer" : "HP",
+          "modelName" : "HP Officejet Color X555",
+          "wattSleep" : null,
+          "colorSupport" : null,
+          "duplexSupport" : null,
+          "tonerLevelSupport" : null,
+          "a3Support" : null,
+          "_links" : {
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/printermodels/18777"
+            }
+          }
+        },
+        "queues" : [ {
+          "_embedded" : {
+            "driversAndConfigs" : [ {
+              "os" : "WIN_10_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/23250"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/driversAndConfigs/WIN_10_64"
+                }
+              }
+            } ]
+          },
+          "version" : 84,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : false,
+          "signId" : "BNM",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "HP Officejet Color X5555",
+          "active" : true,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "px:group" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/2260e41e-e97a-4aba-8a22-e5a53aaf8995"
+            },
+            "px:autoInstallGroup" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/2260e41e-e97a-4aba-8a22-e5a53aaf8995"
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/0b18b958-e399-4b0b-b646-d7e8aa63c796"
+            }
+          }
+        }, {
+          "_embedded" : {
+            "driversAndConfigs" : [ {
+              "os" : "WIN_2016_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/28204"
+                },
+                "px:driverConfig" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs/90f4fb3b-c362-4774-ade8-87c5fb38b401"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_2016_64"
+                }
+              }
+            }, {
+              "os" : "WIN_2008R2_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/28204"
+                },
+                "px:driverConfig" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs/90f4fb3b-c362-4774-ade8-87c5fb38b401"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_2008R2_64"
+                }
+              }
+            }, {
+              "os" : "WIN_10_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/28204"
+                },
+                "px:driverConfig" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs/90f4fb3b-c362-4774-ade8-87c5fb38b401"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_10_64"
+                }
+              }
+            }, {
+              "os" : "WIN_2012R2_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/28204"
+                },
+                "px:driverConfig" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs/90f4fb3b-c362-4774-ade8-87c5fb38b401"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_2012R2_64"
+                }
+              }
+            }, {
+              "os" : "WIN_8_1_32",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/14958"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_8_1_32"
+                }
+              }
+            }, {
+              "os" : "WIN_2012_64",
+              "_links" : {
+                "px:driver" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers/28204"
+                },
+                "px:driverConfig" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs/90f4fb3b-c362-4774-ade8-87c5fb38b401"
+                },
+                "self" : {
+                  "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/WIN_2012_64"
+                }
+              }
+            } ]
+          },
+          "version" : 84,
+          "alwaysReprint" : false,
+          "autoInstall" : false,
+          "autoUpdate" : false,
+          "global" : true,
+          "signId" : "BNM",
+          "defaultDuplex" : false,
+          "defaultMono" : false,
+          "name" : "Reproduce working on it issue",
+          "active" : true,
+          "_links" : {
+            "px:printer" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+            },
+            "px:driversAndConfig" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/driversAndConfigs/"
+            },
+            "px:groups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/groups"
+            },
+            "px:autoInstallGroups" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/autoInstallGroups"
+            },
+            "px:groupUpdateRequests" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/groupUpdateRequests"
+            },
+            "px:driverConflicts" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9/drivers?os={os}&amp;driverId={driverId}",
+              "templated" : true
+            },
+            "px:autoInstallGroup" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/2a3a4ea9-5f63-4e5b-8507-25bfd1481777"
+            },
+            "self" : {
+              "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues/a8ce50ed-0511-49ff-af4d-8a0fdd4955a9"
+            }
+          }
+        } ]
+      },
+      "version" : 84,
+      "type" : "NETWORK",
+      "ipAddress" : "192.168.1.9",
+      "pdls" : [ "PCL5", "PCLXL", "POSTSCRIPT", "PDF" ],
+      "location" : "Office, Reception",
+      "serialNumber" : "CN3993Y073",
+      "signId" : "BNM",
+      "colorSupport" : true,
+      "duplexSupport" : true,
+      "created" : "2018-10-08T11:34:48.600Z",
+      "geoLocation" : null,
+      "macAddress" : "F0921C637CA2",
+      "name" : "HP Officejet Color X555",
+      "_links" : {
+        "px:printerModel" : {
+          "href" : "https://api.devenv.printix.net/v1/printermodels/18777"
+        },
+        "px:network" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23"
+        },
+        "px:auditEvents" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/auditEvents?page=0"
+        },
+        "px:rawdata" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+        },
+        "px:queues" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1/queues"
+        },
+        "px:editsuggestions" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/editsuggestions/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+        },
+        "self" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "item" : [ {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/c432f777-9680-42c6-855d-936f6682f9e3"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/d42c1135-3af1-4553-8de3-ea131795e81b"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/3bd6b616-412c-4737-9656-1bbc61a463c1"
+    } ],
+    "px:rawdata" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/printers"
+    },
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers?all=false&amp;global=false&amp;filterByGroups=false"
+    },
+    "curies" : [ {
+      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
+      "name" : "px",
+      "templated" : true
+    } ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-job">Create Printjob</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creating the job, is a simple form post</p>
+</div>
+<div class="sect3">
+<h4 id="_request_structure_4">Request structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs' -i -X POST \
+    -H 'Accept: application/json' \
+    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b' \
+    -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1' \
+    -d 'jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_4">Response structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "uploadHeaders" : {
+    "x-ms-blob-type" : "BlockBlob"
+  },
+  "color" : null,
+  "pdl" : null,
+  "submitTime" : "2018-11-09T05:45:09.204777Z",
+  "restoreTime" : null,
+  "jobState" : "UPLOADING",
+  "deletedTime" : null,
+  "encryption" : null,
+  "duplex" : null,
+  "jobName" : "TestJob",
+  "pageCount" : null,
+  "paperSize" : null,
+  "pinned" : false,
+  "cloudStore" : null,
+  "printjobParameters" : {
+    "copies" : 1,
+    "color" : false,
+    "duplex" : "NONE",
+    "orientation" : "PORTRAIT",
+    "paperSize" : "ISOA4"
+  },
+  "cloudStoreReferences" : [ {
+    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
+    "directory" : "FILE_UPLOAD"
+  } ],
+  "_links" : {
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd"
+    },
+    "px:owner" : {
+      "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+    },
+    "px:printer" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+    },
+    "px:upload" : {
+      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/56a01ef3-532c-4672-8a57-5cead1d8c2fd?sig=FxW5iaOErB1y6iO0BPpXrwyBhr3hqZ7wMRsxEJZJBc0%3D&amp;st=2018-11-09T05%3A30%3A09Z&amp;se=2018-11-09T06%3A45%3A09Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
+    },
+    "px:uploadCompleted" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd/uploadCompleted"
+    },
+    "curies" : [ {
+      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
+      "name" : "px",
+      "templated" : true
+    } ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upload-job-data">Upload Job data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The response from the job creation contains a signed upload link, and
+an uploadHeaders property. The shape and content of these properties depends on the
+tenant configuration, but will point to some kind of cloud storage(Azure Blob storage, Google Cloud Storage or AWS S3)
+this link + upload headers contains all required authentication information,
+so even in the case of an intermidiary server, interacting with the printix api on behalf of a
+specific user, the upload can be done directly from the enduser client.
+The data is uploaded by PUTting to the url in the link, with the headers from uploadHeaders set.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="finalize-upload">Finalize upload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the job data is uploaded, the client informs the Printix Api that the
+job is ready.</p>
+</div>
+<div class="sect3">
+<h4 id="_request_structure_5">Request structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
+    -H 'Authorization: Bearer 3640d248-c852-4872-900d-9d091634020b' \
+    -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_response_structure_5">Response structure</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "uploadHeaders" : { },
+  "color" : null,
+  "pdl" : null,
+  "submitTime" : "2018-11-09T05:45:09.204Z",
+  "restoreTime" : null,
+  "jobState" : "CONVERTING",
+  "deletedTime" : null,
+  "encryption" : null,
+  "duplex" : null,
+  "jobName" : "TestJob",
+  "pageCount" : null,
+  "paperSize" : null,
+  "pinned" : false,
+  "cloudStore" : null,
+  "printjobParameters" : {
+    "copies" : 1,
+    "color" : false,
+    "duplex" : "NONE",
+    "orientation" : "PORTRAIT",
+    "paperSize" : "ISOA4"
+  },
+  "cloudStoreReferences" : [ {
+    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
+    "directory" : "FILE_UPLOAD"
+  } ],
+  "_links" : {
+    "self" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/56a01ef3-532c-4672-8a57-5cead1d8c2fd"
+    },
+    "px:owner" : {
+      "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
+    },
+    "px:printer" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
+    },
+    "curies" : [ {
+      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
+      "name" : "px",
+      "templated" : true
+    } ]
+  }
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
