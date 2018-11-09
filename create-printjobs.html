@@ -474,11 +474,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>The scenario described in this document, is one where an enduser is user an external service, for managing and printing
 documents. This in turns delegates the management of printing and printjobs to a seperate service, Printix.
-From a brids eye view the process is
-. The Service authenticates with the printix Api as a service principal
-. When Performing actions on behalf of an individual user (Which is basically all actions), the Service must use the credentials provided in Step 1 to get a special
-token which identifies that user.
-. The token aquired in step 2 is used to create Printjobs on behalf of the user.</p>
+From a brids eye view the process is:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Service authenticates with the printix Api as a service principal</p>
+</li>
+<li>
+<p>When Performing actions on behalf of an individual user (Which is basically all actions), the Service must use the credentials provided in Step 1 to get a special
+token which identifies that user.</p>
+</li>
+<li>
+<p>The token aquired in step 2 is used to create Printjobs on behalf of the user.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Creating on or more printjobs consists of multiple steps.</p>
@@ -585,7 +595,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
 </div>
 </div>
 </div>
@@ -674,7 +684,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
 </div>
 </div>
 </div>
@@ -772,7 +782,7 @@ a user scoped token.</p>
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541772784,
+  "version" : 1541772855,
   "dataProcessingAmendmentAccepted" : true,
   "clientTaskPollTimeInterval" : 30000,
   "clientHeartbeatInterval" : 30000,
@@ -972,7 +982,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
 </div>
 </div>
 </div>
@@ -1007,7 +1017,7 @@ a user scoped token.</p>
       }
     }
   },
-  "version" : 1541772784,
+  "version" : 1541772855,
   "userAppSettings" : {
     "lastUsedPrinter" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/0a5f5ccc-2b4a-4602-bae7-19d23616771f",
     "pinnedPrinterQueues" : [ ],
@@ -1060,7 +1070,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382'</code></pre>
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
 </div>
 </div>
 </div>
@@ -1675,7 +1685,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs' -i -X POST \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382' \
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1' \
     -d 'jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4'</code></pre>
 </div>
@@ -1703,7 +1713,7 @@ a user scoped token.</p>
   "paperSize" : null,
   "pdl" : null,
   "restoreTime" : null,
-  "submitTime" : "2018-11-09T14:13:05.933978Z",
+  "submitTime" : "2018-11-09T14:14:16.2266Z",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1715,7 +1725,7 @@ a user scoped token.</p>
   "cloudStore" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1724,10 +1734,10 @@ a user scoped token.</p>
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
     },
     "px:upload" : {
-      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/47ae6e5f-e989-49de-aa92-fbd1fa22d027?sig=Mi2Lcpyi96vukrUlCKhNDlyakPq6qzDlHF%2F25%2FukIKc%3D&amp;st=2018-11-09T13%3A58%3A05Z&amp;se=2018-11-09T15%3A13%3A05Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
+      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/a009779a-0475-48f2-b746-7a6611bd4050?sig=WXYmRL7FckDh%2BnJiwDuclkXb%2BpjsQjmDzcAq9wnYY4s%3D&amp;st=2018-11-09T13%3A59%3A16Z&amp;se=2018-11-09T15%3A14%3A16Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
     },
     "px:uploadCompleted" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027/uploadCompleted"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050/uploadCompleted"
     },
     "curies" : [ {
       "href" : "http://docs.printix.net/api/v1/rels/{rel}",
@@ -1766,8 +1776,8 @@ job is ready.</p>
 <h4 id="_request_structure_6">Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
-    -H 'Authorization: Bearer 6bc51934-9cc1-4b04-b9ee-210fff990382' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
+    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1'</code></pre>
 </div>
 </div>
@@ -1792,7 +1802,7 @@ job is ready.</p>
   "paperSize" : null,
   "pdl" : null,
   "restoreTime" : null,
-  "submitTime" : "2018-11-09T14:13:05.933Z",
+  "submitTime" : "2018-11-09T14:14:16.226Z",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1804,7 +1814,7 @@ job is ready.</p>
   "cloudStore" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/47ae6e5f-e989-49de-aa92-fbd1fa22d027"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1827,7 +1837,7 @@ job is ready.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 15:12:36 CET
+Last updated 2018-11-09 15:13:55 CET
 </div>
 </div>
 </body>
