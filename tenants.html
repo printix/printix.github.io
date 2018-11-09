@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5'</code></pre>
 </div>
 </div>
 </div>
@@ -458,49 +458,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
         "enabled" : true,
         "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
         "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
+        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
         "admin_consent_granted" : true
       },
-      "buildIn" : {
-        "selfRegistrationAllowed" : false,
-        "allowedEmailDomains" : [ ]
+      "azureAD" : {
+        "metadataURL" : null,
+        "enabled" : false
       },
       "ad" : {
         "server" : null,
         "enabled" : false,
         "defaultDomain" : null,
-        "network" : null,
         "sslEnabled" : false,
+        "network" : null,
         "port" : null
       },
-      "azureAD" : {
-        "metadataURL" : null,
-        "enabled" : false
+      "buildIn" : {
+        "selfRegistrationAllowed" : false,
+        "allowedEmailDomains" : [ ]
       }
     },
     "productsAndFeatures" : {
       "features" : {
-        "FREEDOM_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_MANAGEMENT" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_RELAY" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "VIRTUAL_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : true
-        },
-        "USER_WEB_APP" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
         "PRINT_JOB_UPLOAD" : {
           "enabled" : false,
           "userManaged" : false
@@ -509,9 +489,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           "enabled" : true,
           "userManaged" : true
         },
+        "PRINT_JOB_RELAY" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
         "DUMMY_TEST_FEATURE" : {
           "enabled" : false,
           "userManaged" : false
+        },
+        "PRINT_JOB_MANAGEMENT" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "FREEDOM_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "USER_WEB_APP" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "VIRTUAL_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : true
         }
       },
       "products" : {
@@ -533,28 +533,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541772855,
+  "version" : 1541772979,
   "dataProcessingAmendmentAccepted" : true,
-  "clientTaskPollTimeInterval" : 30000,
-  "clientHeartbeatInterval" : 30000,
-  "mailSignature" : "Dev user\ndev@printix.net",
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
   "companyAddress" : null,
-  "clientMigratePrintQueues" : true,
-  "clientChangePrintDriver" : false,
-  "deactivatedTime" : null,
+  "clientTaskPollTimeInterval" : 30000,
+  "clientHeartbeatInterval" : 30000,
   "clientConfigSyncInterval" : 300000,
   "clientVersionCheckInterval" : 3600000,
-  "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
+  "clientMigratePrintQueues" : true,
+  "clientChangePrintDriver" : false,
+  "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "uploadPrintAnywhere" : true,
   "uploadPrintLater" : false,
-  "createdTime" : "2018-04-18T11:22:00.239Z",
   "clientHideSignId" : false,
   "userMayAddPrinter" : true,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
+  "mailSignature" : "Dev user\ndev@printix.net",
+  "createdTime" : "2018-04-18T11:22:00.239Z",
+  "deactivatedTime" : null,
+  "deletedTime" : null,
+  "printqueueNameFormat" : "SIGNID_AFTER",
   "createDefaultQueues" : true,
   "name" : "Printix Webtest",
   "_links" : {
@@ -725,7 +725,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 15:13:55 CET
+Last updated 2018-11-09 15:15:40 CET
 </div>
 </div>
 </body>

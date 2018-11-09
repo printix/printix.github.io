@@ -595,7 +595,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5'</code></pre>
 </div>
 </div>
 </div>
@@ -684,7 +684,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5'</code></pre>
 </div>
 </div>
 </div>
@@ -707,49 +707,29 @@ a user scoped token.</p>
         "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
         "enabled" : true,
         "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
         "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
+        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
         "admin_consent_granted" : true
       },
-      "buildIn" : {
-        "selfRegistrationAllowed" : false,
-        "allowedEmailDomains" : [ ]
+      "azureAD" : {
+        "metadataURL" : null,
+        "enabled" : false
       },
       "ad" : {
         "server" : null,
         "enabled" : false,
         "defaultDomain" : null,
-        "network" : null,
         "sslEnabled" : false,
+        "network" : null,
         "port" : null
       },
-      "azureAD" : {
-        "metadataURL" : null,
-        "enabled" : false
+      "buildIn" : {
+        "selfRegistrationAllowed" : false,
+        "allowedEmailDomains" : [ ]
       }
     },
     "productsAndFeatures" : {
       "features" : {
-        "FREEDOM_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_MANAGEMENT" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_RELAY" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "VIRTUAL_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : true
-        },
-        "USER_WEB_APP" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
         "PRINT_JOB_UPLOAD" : {
           "enabled" : false,
           "userManaged" : false
@@ -758,9 +738,29 @@ a user scoped token.</p>
           "enabled" : true,
           "userManaged" : true
         },
+        "PRINT_JOB_RELAY" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
         "DUMMY_TEST_FEATURE" : {
           "enabled" : false,
           "userManaged" : false
+        },
+        "PRINT_JOB_MANAGEMENT" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "FREEDOM_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "USER_WEB_APP" : {
+          "enabled" : true,
+          "userManaged" : false
+        },
+        "VIRTUAL_PRINTERS" : {
+          "enabled" : true,
+          "userManaged" : true
         }
       },
       "products" : {
@@ -782,28 +782,28 @@ a user scoped token.</p>
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541772855,
+  "version" : 1541772979,
   "dataProcessingAmendmentAccepted" : true,
-  "clientTaskPollTimeInterval" : 30000,
-  "clientHeartbeatInterval" : 30000,
-  "mailSignature" : "Dev user\ndev@printix.net",
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
   "companyAddress" : null,
-  "clientMigratePrintQueues" : true,
-  "clientChangePrintDriver" : false,
-  "deactivatedTime" : null,
+  "clientTaskPollTimeInterval" : 30000,
+  "clientHeartbeatInterval" : 30000,
   "clientConfigSyncInterval" : 300000,
   "clientVersionCheckInterval" : 3600000,
-  "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
+  "clientMigratePrintQueues" : true,
+  "clientChangePrintDriver" : false,
+  "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "uploadPrintAnywhere" : true,
   "uploadPrintLater" : false,
-  "createdTime" : "2018-04-18T11:22:00.239Z",
   "clientHideSignId" : false,
   "userMayAddPrinter" : true,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
+  "mailSignature" : "Dev user\ndev@printix.net",
+  "createdTime" : "2018-04-18T11:22:00.239Z",
+  "deactivatedTime" : null,
+  "deletedTime" : null,
+  "printqueueNameFormat" : "SIGNID_AFTER",
   "createDefaultQueues" : true,
   "name" : "Printix Webtest",
   "_links" : {
@@ -982,7 +982,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5'</code></pre>
 </div>
 </div>
 </div>
@@ -1017,17 +1017,17 @@ a user scoped token.</p>
       }
     }
   },
-  "version" : 1541772855,
+  "version" : 1541772978,
+  "inactivityAutoDelete" : false,
   "userAppSettings" : {
     "lastUsedPrinter" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/0a5f5ccc-2b4a-4602-bae7-19d23616771f",
+    "serviceMenuEnabled" : null,
+    "changeLogReviewDate" : "2018-09-24T12:00:00.000Z",
+    "lastUsedNetwork" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
     "pinnedPrinterQueues" : [ ],
     "pinnedPrinters" : [ "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6f7e3bf1-d5d0-408b-a542-20bab511713c" ],
-    "lastUsedNetwork" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
-    "changeLogReviewDate" : "2018-09-24T12:00:00.000Z",
-    "lastUsedQueue" : null,
-    "serviceMenuEnabled" : null
+    "lastUsedQueue" : null
   },
-  "inactivityAutoDelete" : false,
   "emailOptOuts" : [ ],
   "_links" : {
     "self" : {
@@ -1070,7 +1070,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d'</code></pre>
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5'</code></pre>
 </div>
 </div>
 </div>
@@ -1083,18 +1083,18 @@ a user scoped token.</p>
     "printers" : [ {
       "_embedded" : {
         "printerModel" : {
-          "modelName" : "Printix Anywhere",
           "manufacturer" : "Printix",
-          "colorSupport" : true,
-          "duplexSupport" : true,
-          "a3Support" : null,
+          "modelName" : "Printix Anywhere",
           "scanSupport" : null,
           "tonerLevelSupport" : null,
           "monoSpeedPPM" : null,
           "colorSpeedPPM" : null,
           "wattPrint" : null,
+          "colorSupport" : true,
+          "duplexSupport" : true,
           "wattReady" : null,
           "wattSleep" : null,
+          "a3Support" : null,
           "_links" : {
             "self" : {
               "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
@@ -1107,12 +1107,12 @@ a user scoped token.</p>
           },
           "version" : 4,
           "signId" : "000",
-          "alwaysReprint" : false,
+          "global" : false,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : false,
+          "alwaysReprint" : false,
           "name" : "Magnus' ANYWHERE Extravaganza",
           "active" : true,
           "_links" : {
@@ -1143,15 +1143,15 @@ a user scoped token.</p>
       },
       "version" : 4,
       "type" : "FREEDOM",
-      "ipAddress" : "",
-      "location" : null,
-      "created" : "2018-10-24T12:03:08.517Z",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "geoLocation" : null,
-      "macAddress" : null,
       "serialNumber" : null,
       "signId" : "000",
+      "geoLocation" : null,
+      "macAddress" : null,
+      "location" : null,
+      "created" : "2018-10-24T12:03:08.517Z",
+      "ipAddress" : "",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "name" : "Magnus' ANYWHERE Extravaganza",
       "_links" : {
         "px:printerModel" : {
@@ -1176,18 +1176,18 @@ a user scoped token.</p>
     }, {
       "_embedded" : {
         "printerModel" : {
-          "modelName" : "Printix Anywhere",
           "manufacturer" : "Printix",
-          "colorSupport" : true,
-          "duplexSupport" : true,
-          "a3Support" : null,
+          "modelName" : "Printix Anywhere",
           "scanSupport" : null,
           "tonerLevelSupport" : null,
           "monoSpeedPPM" : null,
           "colorSpeedPPM" : null,
           "wattPrint" : null,
+          "colorSupport" : true,
+          "duplexSupport" : true,
           "wattReady" : null,
           "wattSleep" : null,
+          "a3Support" : null,
           "_links" : {
             "self" : {
               "href" : "https://api.devenv.printix.net/v1/printermodels/18788"
@@ -1200,12 +1200,12 @@ a user scoped token.</p>
           },
           "version" : 2,
           "signId" : "001",
-          "alwaysReprint" : false,
+          "global" : false,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : false,
+          "alwaysReprint" : false,
           "name" : "Second anywhere",
           "active" : true,
           "_links" : {
@@ -1236,15 +1236,15 @@ a user scoped token.</p>
       },
       "version" : 2,
       "type" : "FREEDOM",
-      "ipAddress" : "",
-      "location" : null,
-      "created" : "2018-10-31T08:15:48.291Z",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "geoLocation" : null,
-      "macAddress" : null,
       "serialNumber" : null,
       "signId" : "001",
+      "geoLocation" : null,
+      "macAddress" : null,
+      "location" : null,
+      "created" : "2018-10-31T08:15:48.291Z",
+      "ipAddress" : "",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "name" : "Second anywhere",
       "_links" : {
         "px:printerModel" : {
@@ -1269,18 +1269,18 @@ a user scoped token.</p>
     }, {
       "_embedded" : {
         "printerModel" : {
-          "modelName" : "Lexmark X792",
           "manufacturer" : "Lexmark",
-          "colorSupport" : null,
-          "duplexSupport" : null,
-          "a3Support" : null,
+          "modelName" : "Lexmark X792",
           "scanSupport" : null,
           "tonerLevelSupport" : null,
           "monoSpeedPPM" : null,
           "colorSpeedPPM" : null,
           "wattPrint" : null,
+          "colorSupport" : null,
+          "duplexSupport" : null,
           "wattReady" : null,
           "wattSleep" : null,
+          "a3Support" : null,
           "_links" : {
             "self" : {
               "href" : "https://api.devenv.printix.net/v1/printermodels/18789"
@@ -1303,12 +1303,12 @@ a user scoped token.</p>
           },
           "version" : 70,
           "signId" : "ASD",
-          "alwaysReprint" : false,
+          "global" : false,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : false,
+          "alwaysReprint" : false,
           "name" : "Lexmark X792",
           "active" : true,
           "_links" : {
@@ -1341,12 +1341,12 @@ a user scoped token.</p>
           },
           "version" : 70,
           "signId" : "ASD",
-          "alwaysReprint" : false,
+          "global" : false,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : false,
+          "alwaysReprint" : false,
           "name" : "Q Lexmark X792",
           "active" : false,
           "_links" : {
@@ -1377,19 +1377,19 @@ a user scoped token.</p>
       },
       "version" : 70,
       "type" : "NETWORK",
-      "ipAddress" : "192.168.1.49",
-      "location" : "",
-      "created" : "2018-09-26T10:51:11.772Z",
-      "colorSupport" : true,
-      "duplexSupport" : true,
+      "serialNumber" : "7562479474RVN-96-0",
+      "signId" : "ASD",
+      "pdls" : [ "PCL5", "POSTSCRIPT", "XPS", "PDF", "PCLXL" ],
       "geoLocation" : {
         "lat" : 55.7317475,
         "lon" : 12.4429025
       },
       "macAddress" : "0021B719C8F5",
-      "serialNumber" : "7562479474RVN-96-0",
-      "signId" : "ASD",
-      "pdls" : [ "PCL5", "POSTSCRIPT", "XPS", "PDF", "PCLXL" ],
+      "location" : "",
+      "created" : "2018-09-26T10:51:11.772Z",
+      "ipAddress" : "192.168.1.49",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "name" : "Lexmark X792",
       "_links" : {
         "px:printerModel" : {
@@ -1417,18 +1417,18 @@ a user scoped token.</p>
     }, {
       "_embedded" : {
         "printerModel" : {
-          "modelName" : "HP Officejet Color X555",
           "manufacturer" : "HP",
-          "colorSupport" : null,
-          "duplexSupport" : null,
-          "a3Support" : null,
+          "modelName" : "HP Officejet Color X555",
           "scanSupport" : null,
           "tonerLevelSupport" : null,
           "monoSpeedPPM" : null,
           "colorSpeedPPM" : null,
           "wattPrint" : null,
+          "colorSupport" : null,
+          "duplexSupport" : null,
           "wattReady" : null,
           "wattSleep" : null,
+          "a3Support" : null,
           "_links" : {
             "self" : {
               "href" : "https://api.devenv.printix.net/v1/printermodels/18777"
@@ -1451,12 +1451,12 @@ a user scoped token.</p>
           },
           "version" : 84,
           "signId" : "BNM",
-          "alwaysReprint" : false,
+          "global" : false,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : false,
+          "alwaysReprint" : false,
           "name" : "HP Officejet Color X5555",
           "active" : true,
           "_links" : {
@@ -1570,12 +1570,12 @@ a user scoped token.</p>
           },
           "version" : 84,
           "signId" : "BNM",
-          "alwaysReprint" : false,
+          "global" : true,
+          "autoUpdate" : false,
           "defaultDuplex" : false,
           "defaultMono" : false,
           "autoInstall" : false,
-          "autoUpdate" : false,
-          "global" : true,
+          "alwaysReprint" : false,
           "name" : "Reproduce working on it issue",
           "active" : true,
           "_links" : {
@@ -1609,16 +1609,16 @@ a user scoped token.</p>
       },
       "version" : 84,
       "type" : "NETWORK",
-      "ipAddress" : "192.168.1.9",
-      "location" : "Office, Reception",
-      "created" : "2018-10-08T11:34:48.600Z",
-      "colorSupport" : true,
-      "duplexSupport" : true,
-      "geoLocation" : null,
-      "macAddress" : "F0921C637CA2",
       "serialNumber" : "CN3993Y073",
       "signId" : "BNM",
       "pdls" : [ "PCL5", "PCLXL", "POSTSCRIPT", "PDF" ],
+      "geoLocation" : null,
+      "macAddress" : "F0921C637CA2",
+      "location" : "Office, Reception",
+      "created" : "2018-10-08T11:34:48.600Z",
+      "ipAddress" : "192.168.1.9",
+      "colorSupport" : true,
+      "duplexSupport" : true,
       "name" : "HP Officejet Color X555",
       "_links" : {
         "px:printerModel" : {
@@ -1685,7 +1685,7 @@ a user scoped token.</p>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/3c15bbf8-5680-440d-86e4-cc791075627d/printjobs' -i -X POST \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d' \
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1' \
     -d 'jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4'</code></pre>
 </div>
@@ -1700,20 +1700,18 @@ a user scoped token.</p>
     "x-ms-blob-type" : "BlockBlob"
   },
   "color" : null,
-  "cloudStoreReferences" : [ {
-    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
-    "directory" : "FILE_UPLOAD"
-  } ],
-  "deletedTime" : null,
-  "duplex" : null,
-  "encryption" : null,
-  "jobName" : "TestJob",
+  "submitTime" : "2018-11-09T14:16:20.488651Z",
+  "restoreTime" : null,
   "jobState" : "UPLOADING",
+  "deletedTime" : null,
   "pageCount" : null,
   "paperSize" : null,
+  "pinned" : false,
+  "cloudStore" : null,
+  "encryption" : null,
+  "duplex" : null,
   "pdl" : null,
-  "restoreTime" : null,
-  "submitTime" : "2018-11-09T14:14:16.2266Z",
+  "jobName" : "TestJob",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1721,11 +1719,13 @@ a user scoped token.</p>
     "orientation" : "PORTRAIT",
     "paperSize" : "ISOA4"
   },
-  "pinned" : false,
-  "cloudStore" : null,
+  "cloudStoreReferences" : [ {
+    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
+    "directory" : "FILE_UPLOAD"
+  } ],
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/d00c4806-ae66-4bb3-a480-60cf3b5eca9e"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1734,10 +1734,10 @@ a user scoped token.</p>
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/6c1bfa86-618c-4228-8c10-9bf6ec150ad9"
     },
     "px:upload" : {
-      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/a009779a-0475-48f2-b746-7a6611bd4050?sig=WXYmRL7FckDh%2BnJiwDuclkXb%2BpjsQjmDzcAq9wnYY4s%3D&amp;st=2018-11-09T13%3A59%3A16Z&amp;se=2018-11-09T15%3A14%3A16Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
+      "href" : "https://devenvprintixjobs.blob.core.windows.net/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printix-jobs-file-upload/d00c4806-ae66-4bb3-a480-60cf3b5eca9e?sig=kHL1XcJ8XXatN%2BW%2B8mY87UxqppD17tA8qCfbF%2FS6%2FMs%3D&amp;st=2018-11-09T14%3A01%3A20Z&amp;se=2018-11-09T15%3A16%3A20Z&amp;sv=2017-04-17&amp;sp=cw&amp;sr=b"
     },
     "px:uploadCompleted" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050/uploadCompleted"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/d00c4806-ae66-4bb3-a480-60cf3b5eca9e/uploadCompleted"
     },
     "curies" : [ {
       "href" : "http://docs.printix.net/api/v1/rels/{rel}",
@@ -1776,8 +1776,8 @@ job is ready.</p>
 <h4 id="_request_structure_6">Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
-    -H 'Authorization: Bearer 60dfbc54-d62f-4fd0-8aec-c46459f5074d' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/d00c4806-ae66-4bb3-a480-60cf3b5eca9e/uploadCompleted?jobName=TestJob&amp;color=false&amp;printer=https%3A%2F%2Fapi.devenv.printix.net%2Fv1%2Ftenants%2Fc57bc29a-2d99-43d2-8b6a-db5b0c65ac26%2Fprinters%2F6c1bfa86-618c-4228-8c10-9bf6ec150ad9&amp;page_size=ISOA4' -i -X GET \
+    -H 'Authorization: Bearer 7fa354aa-8254-44ec-9115-fa29f5ef9db5' \
     -H 'Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1'</code></pre>
 </div>
 </div>
@@ -1789,20 +1789,18 @@ job is ready.</p>
 <pre class="highlight nowrap"><code>{
   "uploadHeaders" : { },
   "color" : null,
-  "cloudStoreReferences" : [ {
-    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
-    "directory" : "FILE_UPLOAD"
-  } ],
-  "deletedTime" : null,
-  "duplex" : null,
-  "encryption" : null,
-  "jobName" : "TestJob",
+  "submitTime" : "2018-11-09T14:16:20.488Z",
+  "restoreTime" : null,
   "jobState" : "CONVERTING",
+  "deletedTime" : null,
   "pageCount" : null,
   "paperSize" : null,
+  "pinned" : false,
+  "cloudStore" : null,
+  "encryption" : null,
+  "duplex" : null,
   "pdl" : null,
-  "restoreTime" : null,
-  "submitTime" : "2018-11-09T14:14:16.226Z",
+  "jobName" : "TestJob",
   "printjobParameters" : {
     "copies" : 1,
     "color" : false,
@@ -1810,11 +1808,13 @@ job is ready.</p>
     "orientation" : "PORTRAIT",
     "paperSize" : "ISOA4"
   },
-  "pinned" : false,
-  "cloudStore" : null,
+  "cloudStoreReferences" : [ {
+    "cloudStoreAccountId" : "0d146b35-7ce1-4aee-a333-a501a204a70d",
+    "directory" : "FILE_UPLOAD"
+  } ],
   "_links" : {
     "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/a009779a-0475-48f2-b746-7a6611bd4050"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs/d00c4806-ae66-4bb3-a480-60cf3b5eca9e"
     },
     "px:owner" : {
       "href" : "https://api.devenv.printix.net/v1/users/3c15bbf8-5680-440d-86e4-cc791075627d"
@@ -1837,7 +1837,7 @@ job is ready.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 15:13:55 CET
+Last updated 2018-11-09 15:15:40 CET
 </div>
 </div>
 </body>
