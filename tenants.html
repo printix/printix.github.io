@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
     -H 'Accept: application/json' \
-    -H 'Authorization: Bearer cf246bcf-0d3b-4115-b806-7e27d3acb3ff'</code></pre>
+    -H 'Authorization: Bearer 1767dcaf-85d2-4366-97fe-1aac4d7d4c0b'</code></pre>
 </div>
 </div>
 </div>
@@ -454,48 +454,58 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig/testAdConfig"
         }
       },
-      "MSIdentity" : {
-        "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
-        "enabled" : true,
-        "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
-        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
-        "admin_consent_granted" : true
-      },
-      "azureAD" : {
-        "metadataURL" : null,
-        "enabled" : false
-      },
-      "ad" : {
-        "server" : null,
-        "enabled" : false,
-        "defaultDomain" : null,
-        "sslEnabled" : false,
-        "network" : null,
-        "port" : null
+      "userSecretAuthenticationConfig" : {
+        "requirePinForIdCodeLogin" : true,
+        "requirePinForCardLogin" : false
       },
       "buildIn" : {
-        "selfRegistrationAllowed" : false,
-        "allowedEmailDomains" : [ ]
+        "selfRegistrationAllowed" : true,
+        "allowedEmailDomains" : [ "printix.net" ],
+        "buildinEnabled" : true
+      },
+      "ad" : {
+        "port" : 389,
+        "enabled" : false,
+        "server" : "192.168.1.8",
+        "network" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
+        "sslEnabled" : false,
+        "defaultDomain" : "test.local"
+      },
+      "azureAD" : {
+        "enabled" : false,
+        "metadataURL" : null
+      },
+      "MSIdentity" : {
+        "enabled" : true,
+        "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
+        "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
+        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
+        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
+        "admin_consent_granted" : false
       }
     },
     "productsAndFeatures" : {
+      "products" : {
+        "FREEDOM" : {
+          "enabled" : true
+        }
+      },
       "features" : {
-        "PRINT_JOB_UPLOAD" : {
-          "enabled" : false,
-          "userManaged" : false
-        },
-        "PRINT_LATER" : {
-          "enabled" : true,
-          "userManaged" : true
-        },
-        "PRINT_JOB_RELAY" : {
+        "USER_WEB_APP" : {
           "enabled" : true,
           "userManaged" : false
         },
         "DUMMY_TEST_FEATURE" : {
           "enabled" : false,
           "userManaged" : false
+        },
+        "ANALYTICS" : {
+          "enabled" : false,
+          "userManaged" : true
+        },
+        "SECURE_PRINT" : {
+          "enabled" : true,
+          "userManaged" : true
         },
         "PRINT_JOB_MANAGEMENT" : {
           "enabled" : true,
@@ -505,26 +515,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
           "enabled" : true,
           "userManaged" : false
         },
-        "USER_WEB_APP" : {
+        "PRINT_JOB_RELAY" : {
           "enabled" : true,
           "userManaged" : false
         },
-        "VIRTUAL_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : true
-        }
-      },
-      "products" : {
-        "FREEDOM" : {
-          "enabled" : true
+        "PRINT_JOB_UPLOAD" : {
+          "enabled" : false,
+          "userManaged" : false
+        },
+        "RELEASE_IN_ORDER" : {
+          "enabled" : false,
+          "userManaged" : false
         }
       },
       "_links" : {
         "self" : {
           "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
         },
-        "px:printLaterConfig" : {
-          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printLaterConfig"
+        "px:securePrintConfiguration" : {
+          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/secureprint"
         }
       }
     }
@@ -533,30 +542,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   "apiEndpoint" : "api.devenv.printix.net",
   "authEndpoint" : "auth.devenv.printix.net",
   "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "version" : 1541775115,
-  "dataProcessingAmendmentAccepted" : true,
+  "wsEndpoint2" : null,
+  "version" : 1600345572,
+  "airPrintHost" : "airprint.devenv.printix.net",
+  "airPrintPort" : 443,
+  "name" : "Web Test",
+  "deactivatedTime" : null,
+  "deletedTime" : null,
+  "hostingDomains" : [ "webtest.devenv.printix.net" ],
   "hostingRegion" : "LOCAL",
   "mailSender" : "Dev user",
   "mailAddress" : "dev@printix.net",
   "companyAddress" : null,
   "clientTaskPollTimeInterval" : 30000,
-  "clientHeartbeatInterval" : 30000,
   "clientConfigSyncInterval" : 300000,
   "clientVersionCheckInterval" : 3600000,
-  "clientMigratePrintQueues" : true,
+  "clientMigratePrintQueues" : false,
   "clientChangePrintDriver" : false,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
-  "uploadPrintAnywhere" : true,
+  "uploadPrintAnywhere" : false,
   "uploadPrintLater" : false,
-  "clientHideSignId" : false,
   "userMayAddPrinter" : true,
   "mailSignature" : "Dev user\ndev@printix.net",
-  "createdTime" : "2018-04-18T11:22:00.239Z",
-  "deactivatedTime" : null,
-  "deletedTime" : null,
-  "printqueueNameFormat" : "SIGNID_AFTER",
+  "createdTime" : "2017-01-24T15:12:35Z",
+  "createdByName" : "Dev user",
+  "createdByEmail" : "dev@printix.net",
+  "printqueueNameFormat" : "SIGNID_HIDDEN",
   "createDefaultQueues" : true,
-  "name" : "Printix Webtest",
+  "mobilePrint" : true,
+  "clientHeartbeatInterval" : 30000,
   "_links" : {
     "self" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
@@ -585,20 +598,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "px:queues" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/queues"
     },
+    "px:printjobReleases" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/releases"
+    },
     "px:printjobs" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs"
     },
     "px:userTasks" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/usertasks"
     },
-    "px:commandReleasePrintJob" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/release"
-    },
     "px:commandDeletePrintJob" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/delete"
-    },
-    "px:commandRestorePrintJob" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/restore"
     },
     "px:commandAddWsQueues" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/queue/add"
@@ -619,7 +629,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers"
     },
     "px:auditEvents" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/auditEvents?page=0"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/auditEvents"
     },
     "px:csOpenTicket" : {
       "href" : "https://api.devenv.printix.net/v1/customerService/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/ticket"
@@ -627,35 +637,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "px:software" : {
       "href" : "https://api.devenv.printix.net/v1/software/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
     },
-    "px:dataanalysis" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/"
+    "px:snmpConfigurations" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/snmp"
     },
-    "px:progressingTasks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/tasks/allProgressing"
+    "px:tenantVendors" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/vendors"
     },
-    "px:networks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks"
-    },
-    "px:unknownNetworks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findUnknownNetworks"
-    },
-    "px:currentuser" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me"
-    },
-    "px:toDos" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/toDos"
-    },
-    "px:authenticationConfiguration" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
-    },
-    "px:identityProviders" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/identity-providers/"
-    },
-    "px:dataextract" : {
-      "href" : "https://api.devenv.printix.net/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataextract"
-    },
-    "px:oauthclients" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/oauthclients"
+    "px:driverUploadRequests" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driveruploadrequests"
     },
     "px:productsAndFeatures" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
@@ -673,7 +662,106 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/cloudStoreAccounts"
     },
     "px:batch" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/batch"
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/batch?strict=false"
+    },
+    "px:dataAccessAccounts" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataAccessAccounts"
+    },
+    "px:defaultDataAccessAccount" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataAccessAccounts/default"
+    },
+    "px:dataExtractJobDefinitions" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/jobDefinitions?enabled=true"
+    },
+    "px:dataExtractJobDefinitionsTest" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/jobDefinitions/testConnection"
+    },
+    "px:pusherClientInfo" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/pusherClientInfo"
+    },
+    "px:issues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/issues"
+    },
+    "px:openIssues" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/issues/open"
+    },
+    "px:subscriptionStatus" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/subscriptionStatus"
+    },
+    "px:idCodes" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/idCodes"
+    },
+    "px:airprintPasswords" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/airprint-passwords"
+    },
+    "px:dataanalysis" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/"
+    },
+    "px:progressingTasks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/tasks/allProgressing"
+    },
+    "px:networks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks"
+    },
+    "px:unknownNetworks" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findUnknownNetworks"
+    },
+    "px:currentuser" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me"
+    },
+    "px:findPrinterByNfcTag" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/findByNfcTag?nfcTag="
+    },
+    "px:toDos" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/toDos"
+    },
+    "px:authenticationConfiguration" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
+    },
+    "px:identityProviders" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/identity-providers/"
+    },
+    "px:oauthclients" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/oauthclients"
+    },
+    "px:deviceLogUploads" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/deviceLogUploads"
+    },
+    "px:sites" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/sites"
+    },
+    "px:timeseries" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/timeseries"
+    },
+    "px:printerCredentials" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/credentials"
+    },
+    "px:onDeviceConfigs" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/ondeviceconfigs"
+    },
+    "px:unsubscribe" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingData/unsubscribe"
+    },
+    "px:deactivate" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/deactivate"
+    },
+    "px:homeOfficeGroup" : [ {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/ab0144f8-6670-4f2a-ad27-a65501253ae1"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/754e0126-d267-4acb-8178-1057556bf1f6"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/7865d3e5-3b0a-4807-b184-bc46a8825cab"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/d449aff9-31af-44ad-9ada-20031cc37d3e"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/b39c4f3e-47c8-4537-8580-69b5c582f456"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/c8277dc0-1cfd-472a-bbcf-3dca14d82da0"
+    }, {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/15c8dd8a-ee22-434d-95a0-c03b9ef5be7d"
+    } ],
+    "px:homeOfficeGroups" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/homeOfficeGroups"
     },
     "px:tenantGroups" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups?inUse=true"
@@ -683,6 +771,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     },
     "px:billingStatus" : {
       "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingStatus"
+    },
+    "px:kioskCredentials" : {
+      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/kioskCredentials"
     },
     "curies" : [ {
       "href" : "http://docs.printix.net/api/v1/rels/{rel}",
@@ -725,7 +816,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 15:51:35 CET
+Last updated 2020-09-17 14:25:40 CEST
 </div>
 </div>
 </body>
