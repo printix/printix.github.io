@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>Tenants</title>
+<title>Untitled</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -421,394 +421,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_tenants">Tenants</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="tenant-get">Get tenant</h3>
-<div class="paragraph">
-<p>This is how you will get a tenant.</p>
-</div>
-<div class="sect3">
-<h4 id="_request_structure">Request structure</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26' -i -X GET \
-    -H 'Accept: application/json' \
-    -H 'Authorization: Bearer 1767dcaf-85d2-4366-97fe-1aac4d7d4c0b'</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_response_structure">Response structure</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code>{
-  "_embedded" : {
-    "authenticationConfiguration" : {
-      "_links" : {
-        "self" : {
-          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
-        },
-        "px:testAdConfig" : {
-          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig/testAdConfig"
-        }
+  "job" : {
+    "_links" : {
+      "self" : {
+        "href" : "https://api.printix.net/cloudprint/tenants/f9c62681-8ae2-4ec1-a50c-6d857b86fd63/jobs/a5c179c2-bba9-41ba-b51a-aa6ea21d7337"
       },
-      "userSecretAuthenticationConfig" : {
-        "requirePinForIdCodeLogin" : true,
-        "requirePinForCardLogin" : false
-      },
-      "buildIn" : {
-        "selfRegistrationAllowed" : true,
-        "allowedEmailDomains" : [ "printix.net" ],
-        "buildinEnabled" : true
-      },
-      "ad" : {
-        "port" : 389,
-        "enabled" : false,
-        "server" : "192.168.1.8",
-        "network" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks/0b9b3351-6f23-421d-9292-45abcc388e23",
-        "sslEnabled" : false,
-        "defaultDomain" : "test.local"
-      },
-      "azureAD" : {
-        "enabled" : false,
-        "metadataURL" : null
-      },
-      "MSIdentity" : {
-        "enabled" : true,
-        "tenantID" : "2e5d89d1-0b98-45d8-b70f-c79db10feb54",
-        "oidcdiscoveryURLTemplate" : "https://login.microsoftonline.com/{tenantID}/v2.0/.well-known/openid-configuration",
-        "admin_consent" : "https://auth.devenv.printix.net/ms/oidc/admin-consent",
-        "tenant_activation_link" : "https://auth.devenv.printix.net/ms/oidc/activate",
-        "admin_consent_granted" : false
+      "printer" : {
+        "href" : "https://api.printix.net/cloudprint/tenants/f9c62681-8ae2-4ec1-a50c-6d857b86fd63/printers/39f9518d-6ef1-458a-9603-2a27c3437ff5/queues/aff13a2e-a395-440e-b343-667e7fce55d5"
       }
     },
-    "productsAndFeatures" : {
-      "products" : {
-        "FREEDOM" : {
-          "enabled" : true
-        }
-      },
-      "features" : {
-        "USER_WEB_APP" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "DUMMY_TEST_FEATURE" : {
-          "enabled" : false,
-          "userManaged" : false
-        },
-        "ANALYTICS" : {
-          "enabled" : false,
-          "userManaged" : true
-        },
-        "SECURE_PRINT" : {
-          "enabled" : true,
-          "userManaged" : true
-        },
-        "PRINT_JOB_MANAGEMENT" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "FREEDOM_PRINTERS" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_RELAY" : {
-          "enabled" : true,
-          "userManaged" : false
-        },
-        "PRINT_JOB_UPLOAD" : {
-          "enabled" : false,
-          "userManaged" : false
-        },
-        "RELEASE_IN_ORDER" : {
-          "enabled" : false,
-          "userManaged" : false
-        }
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
-        },
-        "px:securePrintConfiguration" : {
-          "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/secureprint"
-        }
-      }
+    "id" : "a5c179c2-bba9-41ba-b51a-aa6ea21d7337",
+    "createTime" : 1.600851949696108E9,
+    "printerId" : "39f9518d-6ef1-458a-9603-2a27c3437ff5",
+    "updateTime" : 1.600851949698447E9,
+    "status" : "AWAIT_PRINT",
+    "ownerId" : "280f2e71-7678-41c9-80a5-565656be0f12",
+    "contentType" : "PDF",
+    "title" : "a title"
+  },
+  "_links" : {
+    "uploadCompleted" : {
+      "href" : "https://api.printix.net/cloudprint/tenants/f9c62681-8ae2-4ec1-a50c-6d857b86fd63/jobs/a5c179c2-bba9-41ba-b51a-aa6ea21d7337/completeUpload"
     }
   },
-  "azureEnabled" : true,
-  "apiEndpoint" : "api.devenv.printix.net",
-  "authEndpoint" : "auth.devenv.printix.net",
-  "wsEndpoint" : "wss://websocket.proxyendpoint.devenv.printix.net",
-  "wsEndpoint2" : null,
-  "version" : 1600345572,
-  "airPrintHost" : "airprint.devenv.printix.net",
-  "airPrintPort" : 443,
-  "name" : "Web Test",
-  "deactivatedTime" : null,
-  "deletedTime" : null,
-  "hostingDomains" : [ "webtest.devenv.printix.net" ],
-  "hostingRegion" : "LOCAL",
-  "mailSender" : "Dev user",
-  "mailAddress" : "dev@printix.net",
-  "companyAddress" : null,
-  "clientTaskPollTimeInterval" : 30000,
-  "clientConfigSyncInterval" : 300000,
-  "clientVersionCheckInterval" : 3600000,
-  "clientMigratePrintQueues" : false,
-  "clientChangePrintDriver" : false,
-  "uploadPrintAnywhere" : false,
-  "uploadPrintLater" : false,
-  "userMayAddPrinter" : true,
-  "mailSignature" : "Dev user\ndev@printix.net",
-  "createdTime" : "2017-01-24T15:12:35Z",
-  "createdByName" : "Dev user",
-  "createdByEmail" : "dev@printix.net",
-  "printqueueNameFormat" : "SIGNID_HIDDEN",
-  "createDefaultQueues" : true,
-  "mobilePrint" : true,
-  "clientHeartbeatInterval" : 30000,
-  "_links" : {
-    "self" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
-    },
-    "px:discoverEnvironment" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/discoverEnvironment"
-    },
-    "px:log" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/log"
-    },
-    "px:printers" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers"
-    },
-    "px:driverConfigurations" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driverConfigs"
-    },
-    "px:workstations" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations"
-    },
-    "px:tenantusers" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users"
-    },
-    "px:invites" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/invites"
-    },
-    "px:queues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/queues"
-    },
-    "px:printjobReleases" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/releases"
-    },
-    "px:printjobs" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printjobs"
-    },
-    "px:userTasks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/usertasks"
-    },
-    "px:commandDeletePrintJob" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/printjob/delete"
-    },
-    "px:commandAddWsQueues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/queue/add"
-    },
-    "px:commandDeleteWsQueues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/deleteQueue"
-    },
-    "px:commandUpdateWsQueues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/updateQueue"
-    },
-    "px:commandConvertWsQueues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/ws/convertQueues"
-    },
-    "px:commandCopyQueueConfig" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/command/copyQueueConfig"
-    },
-    "px:printerDrivers" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printerdrivers"
-    },
-    "px:auditEvents" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/auditEvents"
-    },
-    "px:csOpenTicket" : {
-      "href" : "https://api.devenv.printix.net/v1/customerService/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/ticket"
-    },
-    "px:software" : {
-      "href" : "https://api.devenv.printix.net/v1/software/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26"
-    },
-    "px:snmpConfigurations" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/snmp"
-    },
-    "px:tenantVendors" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/vendors"
-    },
-    "px:driverUploadRequests" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/driveruploadrequests"
-    },
-    "px:productsAndFeatures" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/productauthz"
-    },
-    "px:wsCountPerOs" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findWsCountPerOs"
-    },
-    "px:tasks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/internal/tasks"
-    },
-    "px:groupSynchronization" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/synchronization"
-    },
-    "px:cloudStoreAccounts" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/cloudStoreAccounts"
-    },
-    "px:batch" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/batch?strict=false"
-    },
-    "px:dataAccessAccounts" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataAccessAccounts"
-    },
-    "px:defaultDataAccessAccount" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataAccessAccounts/default"
-    },
-    "px:dataExtractJobDefinitions" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/jobDefinitions?enabled=true"
-    },
-    "px:dataExtractJobDefinitionsTest" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/jobDefinitions/testConnection"
-    },
-    "px:pusherClientInfo" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/pusherClientInfo"
-    },
-    "px:issues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/issues"
-    },
-    "px:openIssues" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/issues/open"
-    },
-    "px:subscriptionStatus" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/subscriptionStatus"
-    },
-    "px:idCodes" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/idCodes"
-    },
-    "px:airprintPasswords" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/airprint-passwords"
-    },
-    "px:dataanalysis" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/dataanalysis/"
-    },
-    "px:progressingTasks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/tasks/allProgressing"
-    },
-    "px:networks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/networks"
-    },
-    "px:unknownNetworks" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/workstations/findUnknownNetworks"
-    },
-    "px:currentuser" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/users/me"
-    },
-    "px:findPrinterByNfcTag" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/findByNfcTag?nfcTag="
-    },
-    "px:toDos" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/toDos"
-    },
-    "px:authenticationConfiguration" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/authConfig"
-    },
-    "px:identityProviders" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/identity-providers/"
-    },
-    "px:oauthclients" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/oauthclients"
-    },
-    "px:deviceLogUploads" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/deviceLogUploads"
-    },
-    "px:sites" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/sites"
-    },
-    "px:timeseries" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/timeseries"
-    },
-    "px:printerCredentials" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/credentials"
-    },
-    "px:onDeviceConfigs" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/printers/ondeviceconfigs"
-    },
-    "px:unsubscribe" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingData/unsubscribe"
-    },
-    "px:deactivate" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/deactivate"
-    },
-    "px:homeOfficeGroup" : [ {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/ab0144f8-6670-4f2a-ad27-a65501253ae1"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/754e0126-d267-4acb-8178-1057556bf1f6"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/7865d3e5-3b0a-4807-b184-bc46a8825cab"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/d449aff9-31af-44ad-9ada-20031cc37d3e"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/b39c4f3e-47c8-4537-8580-69b5c582f456"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/c8277dc0-1cfd-472a-bbcf-3dca14d82da0"
-    }, {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups/15c8dd8a-ee22-434d-95a0-c03b9ef5be7d"
-    } ],
-    "px:homeOfficeGroups" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/homeOfficeGroups"
-    },
-    "px:tenantGroups" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/groups?inUse=true"
-    },
-    "px:billingData" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingData"
-    },
-    "px:billingStatus" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/billingStatus"
-    },
-    "px:kioskCredentials" : {
-      "href" : "https://api.devenv.printix.net/v1/tenants/c57bc29a-2d99-43d2-8b6a-db5b0c65ac26/kioskCredentials"
-    },
-    "curies" : [ {
-      "href" : "http://docs.printix.net/api/v1/rels/{rel}",
-      "name" : "px",
-      "templated" : true
-    } ]
-  }
+  "success" : true,
+  "message" : "OK",
+  "uploadLinks" : [ ]
 }</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_links">Links</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:currentuser</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URL of a tenant specific version of the user performing the call(or the user the call is being performed on behalf of)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>px:printers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the printers available to the current user (or the user the call is being performed on behalf of)</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
@@ -816,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-17 14:25:40 CEST
+Last updated 2020-09-23 11:05:49 CEST
 </div>
 </div>
 </body>
