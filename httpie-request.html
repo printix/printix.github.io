@@ -425,9 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ echo '{"vendor_ticket_item":[],"color":{"vendor_id":null,"type":"STANDARD_COLOR"},"duplex":{"type":"NO_DUPLEX"},"page_orientation":{"type":"AUTO"},"copies":{"copies":1},"media_size":{"mediaSize":"A4"}}' | http POST 'https://api.printix.net/cloudprint/tenants/fa39c582-be00-4c02-9249-5a953c014d57/printers/545a5296-68b2-44ac-9796-8c9ec17fdeed/queues/0203a0e9-3e20-4329-8cc2-3a5ac9fe3071/submit?printerId=360eb4ad-f7f6-42d9-95cf-94e0b9be9e08&amp;title=a+title&amp;user=John+Doe' \
-    'Content-Type:application/json' \
-    'Authorization:Bearer b09dfe97-aa8c-424e-b3d3-79559edba91f' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'https://api.printix.net/cloudprint/tenants/32dcfa3a-dc0e-4006-81e1-793a355553f4/jobs/20d654ae-7e4a-4813-a9ef-a501b80478f4' \
+    'Authorization:Bearer d4314d35-da82-4d7f-be37-68f020ca4990' \
     'Accept:application/json'</code></pre>
 </div>
 </div>
@@ -436,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-17 11:48:39 CET
+Last updated 2020-12-18 11:42:25 CET
 </div>
 </div>
 </body>
