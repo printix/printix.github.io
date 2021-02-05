@@ -1059,30 +1059,9 @@ If, on the other hand, the user specifies the printer ID and queue ID, this requ
 <div class="sect3">
 <h4 id="_request_parameters_2">Request parameters</h4>
 <div class="paragraph">
-<p>Both versions of this end-point can take the following optional parameters:</p>
+<p>Both versions of this end-point can take the following optional parameters:
+Unresolved directive in index.adoc - include::generated-snippets/jobList/request-parameters.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The integer value of the page of result we want to get, defaults to 0 if not set.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An integer value used to limit how many results are shown on a page.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect3">
 <h4 id="_response_2">Response</h4>
@@ -1090,94 +1069,9 @@ If, on the other hand, the user specifies the printer ID and queue ID, this requ
 <p>Both versions of the end-point return a boolean success indicator and a paged list of jobs.</p>
 </div>
 <div class="paragraph">
-<p>Below is a breakdown of the fields returned in the response.</p>
+<p>Below is a breakdown of the fields returned in the response.
+Unresolved directive in index.adoc - include::generated-snippets/jobList/response-fields.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An API link to the calling request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jobs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The list of jobs the user searched for.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jobs._links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An API link each job that is returned.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jobs.printer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An API link to the printer associated with each job.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the generated printjob</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.createTime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unix timestamp for when the job was created</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.printerId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Id of the printer associated with a jobo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.updateTime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unix timestamp of when this job was last updated (for new jobs, this will be the same as createTime</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.status</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Current state of the job</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.ownerId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the owner of this job. For jobs created with client credentials this will always be the client_id</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.contentType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The content type of the document associated with the job (currently always PDF or null</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.title</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the printjob. matching the request parameter given when creating the job</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>job.numberOfPages</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pages in the document. Before upload this will be 1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing metadata for the page of results returned</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="_error_handling_4">Error Handling</h3>
@@ -1244,66 +1138,9 @@ It takes no request parameters, and returns boolean success indicator and a page
 </div>
 <div class="paragraph">
 <p>As a printer resource contains a lot of different fields whose meaning
-could be unclear, the table below is provided for the user&#8217;s convenience:</p>
+could be unclear, the table below is provided for the user&#8217;s convenience:
+Unresolved directive in index.adoc - include::generated-snippets/printerInfo/response-fields.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the returned printer</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.capabilities.media_size.options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of supported paper formats on the printer</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.capabilities.supported_content_type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of content types/print formats supported by the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.capabiliities.copies</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Describes the default and maximum number of copies supported
-by a printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.capabilities.color</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of color options supported by the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.capabilities.vendor_capabilities</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of objects describing whether the printer supports releasing print jobs from the cloud, and various localization
-options.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing API links for both the printer that was returned, as well as a <code>/submit</code> link.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printer.jobs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing a list of jobs associated with the returned printer.</p></td>
-</tr>
-</tbody>
-</table>
 <div class="sect2">
 <h3 id="_error_handling_7">Error Handling</h3>
 <div class="paragraph">
@@ -1326,34 +1163,9 @@ In both cases, the response body contains an error description and an internal e
 <div class="sect2">
 <h3 id="_request_parameters_3">Request Parameters</h3>
 <div class="paragraph">
-<p>This request can take the following optional parameters:</p>
+<p>This request can take the following optional parameters:
+Unresolved directive in index.adoc - include::generated-snippets/printerList/request-parameters.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>query</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The query to match, used to match printers with specific characteristics.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The integer value of the page of result we want to get, defaults to 0 if not set.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An integer value used to limit how many results are shown on a page.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="_response_3">Response</h3>
@@ -1361,90 +1173,9 @@ In both cases, the response body contains an error description and an internal e
 <p>This request returns a boolean success indicator and a paged list of printers with their capabilities.</p>
 </div>
 <div class="paragraph">
-<p>Below is a breakdown of the fields returned in the response.</p>
+<p>Below is a breakdown of the fields returned in the response.
+Unresolved directive in index.adoc - include::generated-snippets/printerList/response-fields.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An API link to the calling request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The list of returned printers.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ID of the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.capabilities.media_size.options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of supported paper formats on the printer</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.capabilities.supported_content_type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of content types/print formats supported by the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.capabiliities.copies</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Describes the default and maximum number of copies supported
-by a printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.capabilities.color</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of color options supported by the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>printers.capabilities.vendor_capabilitiy</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A list of objects describing whether the printer supports releasing print jobs from the cloud, and various localization options.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing an API link to the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>submit</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing a link to submit a document to the printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jobs</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ajson object containing a list of jobs associated with a printer.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A json object containing metadata for the page of results returned</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="_error_handling_8">Error Handling</h3>
@@ -1468,7 +1199,7 @@ The response body also contains an internal error ID for troubleshooting</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint HTTP/1.1
-Authorization: Bearer e2804a6c-95a9-499d-8613-b7fc44e73ce6
+Authorization: Bearer 5338d482-3976-4e10-8c61-84d7993edafd
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -1480,14 +1211,14 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: 6e2ZZQy9
+X-Printix-Trace-ID: AM4P0Qm5
 Content-Type: application/json;charset=UTF-8
 Content-Length: 214
 
 {
   "_links" : {
     "acme.printix.net" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/5d65a006-899e-489a-b1a5-110101c0e6fb/printers?page=0&amp;pageSize=10{&amp;query}",
+      "href" : "https://api.printix.net/cloudprint/tenants/0cf18fd8-1819-46cd-af15-d6a2fb5f609a/printers?page=0&amp;pageSize=10{&amp;query}",
       "templated" : true
     }
   }
@@ -1502,9 +1233,9 @@ Content-Length: 214
 <h4 id="_request_2">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/87935de6-7b20-4efd-963f-0f2e90de0637/printers/ca97f823-9589-41ad-b73f-db7f27081092/queues/d6aa26cc-6b2b-4dcd-9b9c-986d474d600c/submit?title=a+title&amp;user=John+Doe HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/d7f1d8df-237d-42cc-a80a-a368acba4040/printers/505b37b8-fed4-4d2a-857f-713fe507e8e2/queues/a773580e-94c8-4811-9220-129da9d1fcf6/submit?title=a+title&amp;user=John+Doe HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer d101b671-c16c-47b9-b053-35e6b35b0b68
+Authorization: Bearer fe6d5650-0b7c-42d4-ab09-43812d2f3c20
 Accept: application/json
 Host: api.printix.net
 Content-Length: 195
@@ -1519,7 +1250,7 @@ Content-Length: 195
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: clEAxPOt
+X-Printix-Trace-ID: 4sIftTzv
 Content-Type: application/json;charset=UTF-8
 Content-Length: 1341
 
@@ -1527,29 +1258,29 @@ Content-Length: 1341
   "job" : {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/87935de6-7b20-4efd-963f-0f2e90de0637/jobs/7f01d255-3aa5-428b-92db-7d49388fe7dc"
+        "href" : "https://api.printix.net/cloudprint/tenants/d7f1d8df-237d-42cc-a80a-a368acba4040/jobs/182459fe-d186-4b51-9b30-5c8c84f8efe4"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/87935de6-7b20-4efd-963f-0f2e90de0637/printers/ca97f823-9589-41ad-b73f-db7f27081092/queues/d6aa26cc-6b2b-4dcd-9b9c-986d474d600c"
+        "href" : "https://api.printix.net/cloudprint/tenants/d7f1d8df-237d-42cc-a80a-a368acba4040/printers/505b37b8-fed4-4d2a-857f-713fe507e8e2/queues/a773580e-94c8-4811-9220-129da9d1fcf6"
       }
     },
-    "id" : "7f01d255-3aa5-428b-92db-7d49388fe7dc",
-    "createTime" : 1.612524722381614E9,
-    "updateTime" : 1.612524722388081E9,
+    "id" : "182459fe-d186-4b51-9b30-5c8c84f8efe4",
+    "createTime" : 1.612524816760328E9,
+    "updateTime" : 1.612524816765793E9,
     "status" : "AWAIT_PRINT",
-    "ownerId" : "cd2496b5-82ea-4559-b19e-47356e947505",
+    "ownerId" : "96d6aa9e-952a-4e96-abe2-428a899b362c",
     "contentType" : "PDF",
     "title" : "a title"
   },
   "_links" : {
     "uploadCompleted" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/87935de6-7b20-4efd-963f-0f2e90de0637/jobs/7f01d255-3aa5-428b-92db-7d49388fe7dc/completeUpload"
+      "href" : "https://api.printix.net/cloudprint/tenants/d7f1d8df-237d-42cc-a80a-a368acba4040/jobs/182459fe-d186-4b51-9b30-5c8c84f8efe4/completeUpload"
     }
   },
   "success" : true,
   "message" : "OK",
   "uploadLinks" : [ {
-    "url" : "https://printixjobs.blob.core.windows.net/9aab9505-c84f-4dba-814f-d710b7c6d089/printix-jobs-file-upload/7f01d255-3aa5-428b-92db-7d49388fe7dc?sig=3FlDWWBnr7704VgZjjApglkioBcUkS9F%2FZXJAVbBmAY%3D&amp;amp;st=2020-09-17T12%3A11%3A14Z&amp;amp;se=2020-09-17T13%3A26%3A14Z&amp;amp;sv=2017-04-17&amp;amp;sp=cw&amp;amp;sr=b",
+    "url" : "https://printixjobs.blob.core.windows.net/9aab9505-c84f-4dba-814f-d710b7c6d089/printix-jobs-file-upload/182459fe-d186-4b51-9b30-5c8c84f8efe4?sig=3FlDWWBnr7704VgZjjApglkioBcUkS9F%2FZXJAVbBmAY%3D&amp;amp;st=2020-09-17T12%3A11%3A14Z&amp;amp;se=2020-09-17T13%3A26%3A14Z&amp;amp;sv=2017-04-17&amp;amp;sp=cw&amp;amp;sr=b",
     "headers" : {
       "x-ms-blob-type" : "BlockBlob"
     }
@@ -1565,8 +1296,8 @@ Content-Length: 1341
 <h4 id="_request_3">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/17d460c3-bab4-4273-bfa0-6bd9168c41d2/jobs/d662e761-8bfe-44a2-867a-edec446a3525/completeUpload HTTP/1.1
-Authorization: Bearer a9d31385-a92f-4631-8780-9221ee7de867
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/2ac9dc46-050f-49a2-be37-8da8a1d2981d/jobs/fb3a1404-2f45-4974-ac00-a7100e6ae4dd/completeUpload HTTP/1.1
+Authorization: Bearer a5244946-3cd6-4284-ae96-8eabf76be593
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -1578,29 +1309,29 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: IKGU3LZz
+X-Printix-Trace-ID: u4vBCv5r
 Content-Type: application/json;charset=UTF-8
 Content-Length: 915
 
 {
-  "tenantId" : "17d460c3-bab4-4273-bfa0-6bd9168c41d2",
+  "tenantId" : "2ac9dc46-050f-49a2-be37-8da8a1d2981d",
   "sortOrder" : null,
   "success" : true,
   "message" : "OK",
   "jobs" : [ {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/17d460c3-bab4-4273-bfa0-6bd9168c41d2/jobs/d662e761-8bfe-44a2-867a-edec446a3525"
+        "href" : "https://api.printix.net/cloudprint/tenants/2ac9dc46-050f-49a2-be37-8da8a1d2981d/jobs/fb3a1404-2f45-4974-ac00-a7100e6ae4dd"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/17d460c3-bab4-4273-bfa0-6bd9168c41d2/printers/569d715c-33fe-40a3-804f-641e89b5f0b4/queues/b7f0d54a-5aa3-4698-8297-33a8c8e45e0c"
+        "href" : "https://api.printix.net/cloudprint/tenants/2ac9dc46-050f-49a2-be37-8da8a1d2981d/printers/012b2dd9-8ab7-450b-9d8c-ff20fe1ab5ce/queues/4c3c3e46-a0fb-44e9-9522-85317d0be752"
       }
     },
-    "id" : "d662e761-8bfe-44a2-867a-edec446a3525",
-    "createTime" : 1.612524707187287E9,
-    "updateTime" : 1.612524722187258E9,
+    "id" : "fb3a1404-2f45-4974-ac00-a7100e6ae4dd",
+    "createTime" : 1.612524801643289E9,
+    "updateTime" : 1.612524816643255E9,
     "status" : "CONVERTING",
-    "ownerId" : "05abc043-3eaa-44ce-8c7b-e453c74a1f19",
+    "ownerId" : "38618dd5-b59e-41f2-b151-f5abc394b9ff",
     "contentType" : "PDF",
     "title" : "job name"
   } ],
@@ -1621,8 +1352,8 @@ Content-Length: 915
 <h4 id="_request_4">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs?page=0&amp;pageSize=10 HTTP/1.1
-Authorization: Bearer 6f221293-09f5-4994-acee-e24a53fbd7f8
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs?page=0&amp;pageSize=10 HTTP/1.1
+Authorization: Bearer b4112166-b3db-4fcb-8c52-2c61d373906d
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -1634,20 +1365,20 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: A5HW3Kn2
+X-Printix-Trace-ID: fBQ95Ley
 Content-Type: application/json;charset=UTF-8
-Content-Length: 9454
+Content-Length: 9457
 
 {
-  "tenantId" : "d8c529ea-da19-43fc-9926-a29a23db8fd3",
+  "tenantId" : "b046363f-3218-4a1c-83fc-28bc29bc69ed",
   "sortOrder" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs?page=0&amp;pageSize=10{&amp;sortorder}",
+      "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs?page=0&amp;pageSize=10{&amp;sortorder}",
       "templated" : true
     },
     "next" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs?page=1&amp;pageSize=10{&amp;sortorder}",
+      "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs?page=1&amp;pageSize=10{&amp;sortorder}",
       "templated" : true
     }
   },
@@ -1656,209 +1387,209 @@ Content-Length: 9454
   "jobs" : [ {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/1e6aee32-59ee-4da9-b9d7-b594e10f5480"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/b439c61c-db3d-4dd7-aea9-e8918f43446f"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "1e6aee32-59ee-4da9-b9d7-b594e10f5480",
-    "createTime" : 1.612524707534716E9,
-    "updateTime" : 1.612524722534672E9,
+    "id" : "b439c61c-db3d-4dd7-aea9-e8918f43446f",
+    "createTime" : 1.61252480186518E9,
+    "updateTime" : 1.612524816865153E9,
     "status" : "CONVERTING",
-    "ownerId" : "6341c9f1-0bc3-4484-8e2a-8593dc37cb81",
+    "ownerId" : "8573ed96-6ac8-44b9-8a01-937075f57d5d",
     "contentType" : "PDF",
     "title" : "job 0"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/29f1d207-b68f-4ecc-8c04-dec176249513"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/eb27e827-6a72-490f-a2a7-811a561736f7"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "29f1d207-b68f-4ecc-8c04-dec176249513",
-    "createTime" : 1.612524707534768E9,
-    "updateTime" : 1.612524722534743E9,
+    "id" : "eb27e827-6a72-490f-a2a7-811a561736f7",
+    "createTime" : 1.612524801865206E9,
+    "updateTime" : 1.612524816865195E9,
     "status" : "CONVERTING",
-    "ownerId" : "6b36b612-10f0-4a8b-b5fb-399afe6a32f1",
+    "ownerId" : "89eb5fca-3f9c-4364-9462-d0163382bb2f",
     "contentType" : "PDF",
     "title" : "job 1"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/70d66288-10db-4b7d-923d-ac9fe6891c20"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/240f9e7e-a7a1-4b0f-8c74-67fbd9c420b8"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "70d66288-10db-4b7d-923d-ac9fe6891c20",
-    "createTime" : 1.61252470753482E9,
-    "updateTime" : 1.612524722534796E9,
+    "id" : "240f9e7e-a7a1-4b0f-8c74-67fbd9c420b8",
+    "createTime" : 1.612524801865227E9,
+    "updateTime" : 1.612524816865217E9,
     "status" : "CONVERTING",
-    "ownerId" : "555d4001-46da-4d01-9d5e-ec8e7321879d",
+    "ownerId" : "952c0c40-6472-4bba-a99b-a5e9d64b0cca",
     "contentType" : "PDF",
     "title" : "job 2"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/506e27d9-5863-4b69-9120-39350665bfdc"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/4d8813a1-47bb-4556-934e-33a6466dc301"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "506e27d9-5863-4b69-9120-39350665bfdc",
-    "createTime" : 1.612524707534863E9,
-    "updateTime" : 1.612524722534848E9,
+    "id" : "4d8813a1-47bb-4556-934e-33a6466dc301",
+    "createTime" : 1.612524801865244E9,
+    "updateTime" : 1.612524816865238E9,
     "status" : "CONVERTING",
-    "ownerId" : "8f2ae89b-b28f-49f1-af8e-913876d12c18",
+    "ownerId" : "72f5b36e-d8bb-4a1f-a200-c00d165a59b6",
     "contentType" : "PDF",
     "title" : "job 3"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/2c705b54-e10e-4f5f-a822-27609dacb920"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/1cad56d5-5f83-432e-996c-ff26d5c57f0a"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "2c705b54-e10e-4f5f-a822-27609dacb920",
-    "createTime" : 1.612524707534914E9,
-    "updateTime" : 1.61252472253489E9,
+    "id" : "1cad56d5-5f83-432e-996c-ff26d5c57f0a",
+    "createTime" : 1.612524801865266E9,
+    "updateTime" : 1.612524816865255E9,
     "status" : "CONVERTING",
-    "ownerId" : "49a5718d-2d57-4983-9cab-59125101bd7b",
+    "ownerId" : "358aa5d6-fd46-4971-a0c4-17b604abe29b",
     "contentType" : "PDF",
     "title" : "job 4"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/09665b68-6192-4ab4-b536-dbfcb12512b5"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/a0e212a5-4bfb-4f76-8a0c-8e359052009d"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "09665b68-6192-4ab4-b536-dbfcb12512b5",
-    "createTime" : 1.612524707534962E9,
-    "updateTime" : 1.61252472253494E9,
+    "id" : "a0e212a5-4bfb-4f76-8a0c-8e359052009d",
+    "createTime" : 1.612524801865309E9,
+    "updateTime" : 1.612524816865292E9,
     "status" : "CONVERTING",
-    "ownerId" : "f98c606d-1157-4133-af59-30ebb8be2ad8",
+    "ownerId" : "3925bf62-5c6c-467b-ae9a-c63aa143c0be",
     "contentType" : "PDF",
     "title" : "job 5"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/74967cff-faf2-4c82-b751-d94d0c5eb62e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/290fdcc1-2ad6-4d0a-8928-8f858b45514a"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "74967cff-faf2-4c82-b751-d94d0c5eb62e",
-    "createTime" : 1.612524707535009E9,
-    "updateTime" : 1.612524722534979E9,
+    "id" : "290fdcc1-2ad6-4d0a-8928-8f858b45514a",
+    "createTime" : 1.612524801865339E9,
+    "updateTime" : 1.612524816865318E9,
     "status" : "CONVERTING",
-    "ownerId" : "cb32176a-2cab-4d10-9008-99878c673b70",
+    "ownerId" : "0566c17d-e1cb-4450-82bf-c68f1778b917",
     "contentType" : "PDF",
     "title" : "job 6"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/0f4b3eec-1e63-406d-bc37-505de46bd1b5"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/14b699ad-0b67-4883-aa8e-3781a9d0325a"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "0f4b3eec-1e63-406d-bc37-505de46bd1b5",
-    "createTime" : 1.612524707535078E9,
-    "updateTime" : 1.612524722535049E9,
+    "id" : "14b699ad-0b67-4883-aa8e-3781a9d0325a",
+    "createTime" : 1.612524801865401E9,
+    "updateTime" : 1.612524816865376E9,
     "status" : "CONVERTING",
-    "ownerId" : "999ca6c5-3168-4537-b350-3464bfb4d345",
+    "ownerId" : "ef8ffb41-5228-4bad-97c6-0cb4ed274051",
     "contentType" : "PDF",
     "title" : "job 7"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/ce55f4ac-8814-4d51-b7df-52e68a2eefad"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/797f74c1-5d26-4c76-a509-50e6d8db2f48"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "ce55f4ac-8814-4d51-b7df-52e68a2eefad",
-    "createTime" : 1.612524707535126E9,
-    "updateTime" : 1.612524722535112E9,
+    "id" : "797f74c1-5d26-4c76-a509-50e6d8db2f48",
+    "createTime" : 1.612524801865446E9,
+    "updateTime" : 1.612524816865432E9,
     "status" : "CONVERTING",
-    "ownerId" : "491345fa-3af3-48f4-9189-2cc2bdc5602c",
+    "ownerId" : "70b553df-4d04-4a28-aaa9-ac70c49bf258",
     "contentType" : "PDF",
     "title" : "job 8"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/c698b835-3f58-4c5b-bf3e-eb80efe66b77"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/d61408d5-b3e5-4682-b7b6-0f77563ae158"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "c698b835-3f58-4c5b-bf3e-eb80efe66b77",
-    "createTime" : 1.612524707535175E9,
-    "updateTime" : 1.612524722535151E9,
+    "id" : "d61408d5-b3e5-4682-b7b6-0f77563ae158",
+    "createTime" : 1.612524801865487E9,
+    "updateTime" : 1.612524816865465E9,
     "status" : "CONVERTING",
-    "ownerId" : "e8af52e0-7243-40be-8b34-659f05c0e265",
+    "ownerId" : "fd7b3267-46eb-4234-83c4-5c7fdcf01a8f",
     "contentType" : "PDF",
     "title" : "job 9"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/d7e60b7b-e82f-45c3-87be-8dc0c5e57892"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/d4d8d456-92f8-464f-b9ba-3a649997319f"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "d7e60b7b-e82f-45c3-87be-8dc0c5e57892",
-    "createTime" : 1.612524707535222E9,
-    "updateTime" : 1.612524722535201E9,
+    "id" : "d4d8d456-92f8-464f-b9ba-3a649997319f",
+    "createTime" : 1.612524801865525E9,
+    "updateTime" : 1.612524816865509E9,
     "status" : "CONVERTING",
-    "ownerId" : "44e5b939-c1f1-4d72-9b1f-a088d73a33a3",
+    "ownerId" : "1cbbeec0-6429-45fa-9dba-0691300642e6",
     "contentType" : "PDF",
     "title" : "job 10"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/2db9572b-15cb-4ee3-9565-830caac7963a"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/a0ab12ce-1999-4414-86b1-8470c74a2aaf"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "2db9572b-15cb-4ee3-9565-830caac7963a",
-    "createTime" : 1.61252470753526E9,
-    "updateTime" : 1.612524722535238E9,
+    "id" : "a0ab12ce-1999-4414-86b1-8470c74a2aaf",
+    "createTime" : 1.612524801865562E9,
+    "updateTime" : 1.612524816865538E9,
     "status" : "CONVERTING",
-    "ownerId" : "941f71a5-1d8a-49bc-a9d5-1b432527aa03",
+    "ownerId" : "ffbc5a8c-8cfe-4f94-833e-a3e45be8b56a",
     "contentType" : "PDF",
     "title" : "job 11"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/jobs/3c80c938-cdd9-41f0-89f9-6084141bb278"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/jobs/5bd6bee9-2235-4fa2-92dc-20d4227122d7"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/d8c529ea-da19-43fc-9926-a29a23db8fd3/printers/d2e78638-1d40-4b01-be2e-de33147d79f4/queues/2dd4cf3e-200e-4310-ae17-71b0e0fb9e0e"
+        "href" : "https://api.printix.net/cloudprint/tenants/b046363f-3218-4a1c-83fc-28bc29bc69ed/printers/b4a414ed-ea15-4033-9731-0afe4fdef0d6/queues/216347f2-9a42-4f25-ac5a-c95467b11d45"
       }
     },
-    "id" : "3c80c938-cdd9-41f0-89f9-6084141bb278",
-    "createTime" : 1.612524707535306E9,
-    "updateTime" : 1.612524722535284E9,
+    "id" : "5bd6bee9-2235-4fa2-92dc-20d4227122d7",
+    "createTime" : 1.612524801865604E9,
+    "updateTime" : 1.612524816865586E9,
     "status" : "CONVERTING",
-    "ownerId" : "b3872a1c-0160-441b-96aa-fe681842b49c",
+    "ownerId" : "6581abd9-549d-423d-b99b-a11fd3afdd8d",
     "contentType" : "PDF",
     "title" : "job 12"
   } ],
@@ -1879,8 +1610,8 @@ Content-Length: 9454
 <h4 id="_request_5">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980/jobs?page=0&amp;pageSize=10 HTTP/1.1
-Authorization: Bearer 45cd4cdb-3827-4cd5-b044-4f43fc2649d3
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c/jobs?page=0&amp;pageSize=10 HTTP/1.1
+Authorization: Bearer c5116c7c-7d46-4a7c-9d59-99dd2a65622e
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -1892,19 +1623,19 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: 6r3T2C0i
+X-Printix-Trace-ID: hB1Rvl3o
 Content-Type: application/json;charset=UTF-8
-Content-Length: 9557
+Content-Length: 9559
 
 {
-  "tenantId" : "dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff",
+  "tenantId" : "d05b0271-97e7-42eb-a289-6b7e23477277",
   "sortOrder" : null,
   "_links" : {
     "self" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980/jobs?page=0&amp;pageSize=10"
+      "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c/jobs?page=0&amp;pageSize=10"
     },
     "next" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980/jobs?page=1&amp;pageSize=10"
+      "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c/jobs?page=1&amp;pageSize=10"
     }
   },
   "success" : true,
@@ -1912,209 +1643,209 @@ Content-Length: 9557
   "jobs" : [ {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/93c4fff2-6e88-4bd1-bbef-993cc6a0657e"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/3f3c3953-429a-4ee0-8870-e8d9cbc8fca2"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "93c4fff2-6e88-4bd1-bbef-993cc6a0657e",
-    "createTime" : 1.612524706875451E9,
-    "updateTime" : 1.61252472187363E9,
+    "id" : "3f3c3953-429a-4ee0-8870-e8d9cbc8fca2",
+    "createTime" : 1.612524801381599E9,
+    "updateTime" : 1.612524816380227E9,
     "status" : "CONVERTING",
-    "ownerId" : "0f0b8ca5-c9b9-4c7c-b3da-ebd12f11cb3a",
+    "ownerId" : "c5778447-c734-4745-ae78-ced1cb7c47e9",
     "contentType" : "PDF",
     "title" : "job 0"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/dd50afc6-e7c4-400c-8906-784b3d98b1fa"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/7838d2b3-94ec-40cb-8e32-fa030fc317a2"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "dd50afc6-e7c4-400c-8906-784b3d98b1fa",
-    "createTime" : 1.61252470687669E9,
-    "updateTime" : 1.612524721876644E9,
+    "id" : "7838d2b3-94ec-40cb-8e32-fa030fc317a2",
+    "createTime" : 1.612524801382506E9,
+    "updateTime" : 1.61252481638247E9,
     "status" : "CONVERTING",
-    "ownerId" : "632289ef-568d-47da-86b7-e9c5be2b659c",
+    "ownerId" : "d33f81fd-7948-475a-898c-74a85c525a6c",
     "contentType" : "PDF",
     "title" : "job 1"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/68e6b316-d856-40a6-9b66-de679ffaa803"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/a59ee2a1-1e01-48ef-a160-a8057cf799c3"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "68e6b316-d856-40a6-9b66-de679ffaa803",
-    "createTime" : 1.612524706876749E9,
-    "updateTime" : 1.612524721876723E9,
+    "id" : "a59ee2a1-1e01-48ef-a160-a8057cf799c3",
+    "createTime" : 1.612524801382558E9,
+    "updateTime" : 1.612524816382543E9,
     "status" : "CONVERTING",
-    "ownerId" : "b365f2bd-4269-4fa0-b0ac-4c63277dca2a",
+    "ownerId" : "ab7ca2c9-f5fb-4616-a367-92fd6160e60f",
     "contentType" : "PDF",
     "title" : "job 2"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/ebe18996-4f5a-486f-9df3-39527642dc41"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/2d508b97-afcb-4186-98e3-43c1490a7f57"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "ebe18996-4f5a-486f-9df3-39527642dc41",
-    "createTime" : 1.612524706876792E9,
-    "updateTime" : 1.612524721876767E9,
+    "id" : "2d508b97-afcb-4186-98e3-43c1490a7f57",
+    "createTime" : 1.612524801382581E9,
+    "updateTime" : 1.612524816382568E9,
     "status" : "CONVERTING",
-    "ownerId" : "bd7268ba-9f70-4c03-b0dc-7618b1091a69",
+    "ownerId" : "4cd8fd41-1a88-496c-bfcd-7de11d3af863",
     "contentType" : "PDF",
     "title" : "job 3"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/5882279d-d20e-4700-b9df-60a861a6bc76"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/cd2eef0c-cbf0-4792-972f-8c1865c2cbf3"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "5882279d-d20e-4700-b9df-60a861a6bc76",
-    "createTime" : 1.612524706876848E9,
-    "updateTime" : 1.612524721876823E9,
+    "id" : "cd2eef0c-cbf0-4792-972f-8c1865c2cbf3",
+    "createTime" : 1.612524801382616E9,
+    "updateTime" : 1.612524816382602E9,
     "status" : "CONVERTING",
-    "ownerId" : "f6c2cdbf-f8dd-40b5-89b6-b262c091fac6",
+    "ownerId" : "2a79a476-56bd-4d4e-bafd-baa51afdb5f9",
     "contentType" : "PDF",
     "title" : "job 4"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/4976429f-f445-478f-bcdc-f3600312244c"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/7f2ce1df-70da-4333-93a1-eb38cc42cb00"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "4976429f-f445-478f-bcdc-f3600312244c",
-    "createTime" : 1.612524706876888E9,
-    "updateTime" : 1.612524721876874E9,
+    "id" : "7f2ce1df-70da-4333-93a1-eb38cc42cb00",
+    "createTime" : 1.612524801382638E9,
+    "updateTime" : 1.61252481638263E9,
     "status" : "CONVERTING",
-    "ownerId" : "a415692b-1b11-476a-9851-af8a2d946555",
+    "ownerId" : "8b427ae0-a86f-4442-a605-5f8fcb367328",
     "contentType" : "PDF",
     "title" : "job 5"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/2e8fab29-ec44-412a-8086-a7275a131afc"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/29b29af8-1895-4074-a1b6-05c19a335657"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "2e8fab29-ec44-412a-8086-a7275a131afc",
-    "createTime" : 1.612524706876933E9,
-    "updateTime" : 1.612524721876911E9,
+    "id" : "29b29af8-1895-4074-a1b6-05c19a335657",
+    "createTime" : 1.612524801382665E9,
+    "updateTime" : 1.612524816382652E9,
     "status" : "CONVERTING",
-    "ownerId" : "6457a310-5ead-4ad3-a4b9-7d86d79f9193",
+    "ownerId" : "6cccc2b6-6c1d-4035-a101-fdea960667e9",
     "contentType" : "PDF",
     "title" : "job 6"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/b7371029-7894-40af-a987-a46e6aaed4d7"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/48a11ee2-7461-4acd-bc28-75a67aa1e96e"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "b7371029-7894-40af-a987-a46e6aaed4d7",
-    "createTime" : 1.61252470687698E9,
-    "updateTime" : 1.612524721876957E9,
+    "id" : "48a11ee2-7461-4acd-bc28-75a67aa1e96e",
+    "createTime" : 1.612524801382692E9,
+    "updateTime" : 1.61252481638268E9,
     "status" : "CONVERTING",
-    "ownerId" : "e3509d8e-5f2d-4915-985f-7aa634685c1d",
+    "ownerId" : "6429d930-3abe-43fa-be07-ad0c26b46cea",
     "contentType" : "PDF",
     "title" : "job 7"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/4f6c1c05-9f33-458b-822e-08a0cf2a1ed1"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/f533b0e1-0cc9-49b0-b345-f3499c227674"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "4f6c1c05-9f33-458b-822e-08a0cf2a1ed1",
-    "createTime" : 1.612524706877041E9,
-    "updateTime" : 1.612524721877013E9,
+    "id" : "f533b0e1-0cc9-49b0-b345-f3499c227674",
+    "createTime" : 1.612524801382815E9,
+    "updateTime" : 1.612524816382721E9,
     "status" : "CONVERTING",
-    "ownerId" : "0095ebd3-af46-45a4-867e-c35acc7f5af2",
+    "ownerId" : "47a35835-0683-4448-a8b4-0671cfca332e",
     "contentType" : "PDF",
     "title" : "job 8"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/f5aab2da-2c49-4372-9674-788ea0114a52"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/3227a3ba-098b-445a-b015-c4e4ddf47e5c"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "f5aab2da-2c49-4372-9674-788ea0114a52",
-    "createTime" : 1.612524706877093E9,
-    "updateTime" : 1.612524721877068E9,
+    "id" : "3227a3ba-098b-445a-b015-c4e4ddf47e5c",
+    "createTime" : 1.612524801382851E9,
+    "updateTime" : 1.612524816382837E9,
     "status" : "CONVERTING",
-    "ownerId" : "c8b310a3-b40f-4b6c-b609-03c5b5a623fb",
+    "ownerId" : "21db5940-34dd-41fb-802e-c90abc4e61a1",
     "contentType" : "PDF",
     "title" : "job 9"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/ba349bf0-8930-422a-b2f0-ba11b21198b4"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/4aed6449-90cb-499d-a82a-03c7840ccd87"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "ba349bf0-8930-422a-b2f0-ba11b21198b4",
-    "createTime" : 1.612524706877136E9,
-    "updateTime" : 1.61252472187712E9,
+    "id" : "4aed6449-90cb-499d-a82a-03c7840ccd87",
+    "createTime" : 1.612524801382874E9,
+    "updateTime" : 1.612524816382866E9,
     "status" : "CONVERTING",
-    "ownerId" : "2590e558-b0e1-4ed3-b2b0-24e634c7bb97",
+    "ownerId" : "be42dcae-48b1-49a2-9867-a6f24faf31ea",
     "contentType" : "PDF",
     "title" : "job 10"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/ae9b165b-e669-447b-b2f7-e34de3be0167"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/c2c30329-c23e-4a03-ac41-591666343c77"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "ae9b165b-e669-447b-b2f7-e34de3be0167",
-    "createTime" : 1.612524706877187E9,
-    "updateTime" : 1.612524721877163E9,
+    "id" : "c2c30329-c23e-4a03-ac41-591666343c77",
+    "createTime" : 1.612524801382902E9,
+    "updateTime" : 1.612524816382889E9,
     "status" : "CONVERTING",
-    "ownerId" : "c425a9e8-7a93-42d7-b499-e6b3273ea9f3",
+    "ownerId" : "3a65468f-4333-478b-bfda-1a48fbffe318",
     "contentType" : "PDF",
     "title" : "job 11"
   }, {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/jobs/f8f5b6f5-b1b4-41a0-824a-bdf862344f5d"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/jobs/9329fea5-2193-419a-a119-14bdd8ae5c84"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/dd7a8ca4-f8a8-48ef-a8d5-aa0c91afbeff/printers/86377e2d-4737-4126-9b5b-23a02e4a28d6/queues/447dca20-c472-4e49-995d-695d132b5980"
+        "href" : "https://api.printix.net/cloudprint/tenants/d05b0271-97e7-42eb-a289-6b7e23477277/printers/42de52c2-a060-400e-a9cf-9a85111a6b90/queues/09fca228-34f6-41a4-a6a4-40acd0a5da3c"
       }
     },
-    "id" : "f8f5b6f5-b1b4-41a0-824a-bdf862344f5d",
-    "createTime" : 1.61252470687724E9,
-    "updateTime" : 1.612524721877215E9,
+    "id" : "9329fea5-2193-419a-a119-14bdd8ae5c84",
+    "createTime" : 1.612524801382929E9,
+    "updateTime" : 1.612524816382916E9,
     "status" : "CONVERTING",
-    "ownerId" : "f09c6da7-6bda-46f1-8951-5cf932f2725c",
+    "ownerId" : "bfbe2314-60ab-4e3c-8e54-4c91c2b8b702",
     "contentType" : "PDF",
     "title" : "job 12"
   } ],
@@ -2135,8 +1866,8 @@ Content-Length: 9557
 <h4 id="_request_6">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/82a258a4-4d4f-41ae-828b-cd4810442719/jobs/56fbc0c6-96f6-4e0c-9064-ceaaeb5f3ad7 HTTP/1.1
-Authorization: Bearer 4a8cf230-3a60-49eb-8214-f5c1fc205849
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/2f7ec777-4992-44af-8a58-e602aa86a6c2/jobs/4bc4a50f-920c-4847-9d88-87ac64a6495d HTTP/1.1
+Authorization: Bearer a9c1c7f8-87a7-4a11-8cd6-5d70a9fbaf3f
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -2148,29 +1879,29 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: hMZKJSpG
+X-Printix-Trace-ID: wZYDFH3p
 Content-Type: application/json;charset=UTF-8
-Content-Length: 913
+Content-Length: 914
 
 {
-  "tenantId" : "82a258a4-4d4f-41ae-828b-cd4810442719",
+  "tenantId" : "2f7ec777-4992-44af-8a58-e602aa86a6c2",
   "sortOrder" : null,
   "success" : true,
   "message" : "OK",
   "jobs" : [ {
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/82a258a4-4d4f-41ae-828b-cd4810442719/jobs/56fbc0c6-96f6-4e0c-9064-ceaaeb5f3ad7"
+        "href" : "https://api.printix.net/cloudprint/tenants/2f7ec777-4992-44af-8a58-e602aa86a6c2/jobs/4bc4a50f-920c-4847-9d88-87ac64a6495d"
       },
       "printer" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/82a258a4-4d4f-41ae-828b-cd4810442719/printers/a33ad89a-88af-4ea8-a6f6-f7b74d89ee77/queues/89f039e3-b44a-4d5d-ba92-ae6d34286cd9"
+        "href" : "https://api.printix.net/cloudprint/tenants/2f7ec777-4992-44af-8a58-e602aa86a6c2/printers/5322da46-77f4-4a0a-a103-b8a9f29047d4/queues/bc8fb46a-7f9f-4983-b1b0-039cadc3a015"
       }
     },
-    "id" : "56fbc0c6-96f6-4e0c-9064-ceaaeb5f3ad7",
-    "createTime" : 1.61252470822042E9,
-    "updateTime" : 1.612524723220396E9,
+    "id" : "4bc4a50f-920c-4847-9d88-87ac64a6495d",
+    "createTime" : 1.612524802095892E9,
+    "updateTime" : 1.612524817095861E9,
     "status" : "CONVERTED",
-    "ownerId" : "7cb398ca-4f73-476f-8b5c-40d0c5b1862c",
+    "ownerId" : "af140011-5180-472f-83d4-cf17af5dd147",
     "contentType" : "PDF",
     "title" : "job name"
   } ],
@@ -2191,8 +1922,8 @@ Content-Length: 913
 <h4 id="_request_7">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/681d21b7-3858-4c41-9442-aae65cceb991/jobs/03d5492d-9428-4e00-aa5e-5eef7fc8fb95/delete HTTP/1.1
-Authorization: Bearer aba0f55b-bcb7-4281-ad84-f62d3cad8e77
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /cloudprint/tenants/d64b71aa-3e68-4989-9541-65c0ed3335df/jobs/80cefcd9-be55-4c92-b2d2-cf5fbc223c10/delete HTTP/1.1
+Authorization: Bearer a4657974-4dad-46d6-a8c0-6469c319b743
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -2204,13 +1935,13 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: BonJE4HU
+X-Printix-Trace-ID: svryuXbL
 Content-Type: application/json;charset=UTF-8
 Content-Length: 124
 
 {
   "success" : true,
-  "message" : "The print job with id 03d5492d-9428-4e00-aa5e-5eef7fc8fb95 was deleted successfully."
+  "message" : "The print job with id 80cefcd9-be55-4c92-b2d2-cf5fbc223c10 was deleted successfully."
 }</code></pre>
 </div>
 </div>
@@ -2222,8 +1953,8 @@ Content-Length: 124
 <h4 id="_request_8">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers?page=0&amp;pageSize=100 HTTP/1.1
-Authorization: Bearer 6c2ed717-7d24-45ab-be69-bfbc2f484789
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers?page=0&amp;pageSize=100 HTTP/1.1
+Authorization: Bearer af693752-603f-45da-80f0-005251e25c8c
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -2235,25 +1966,25 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: 2TaWZmWq
+X-Printix-Trace-ID: gukxzwTB
 Content-Type: application/json;charset=UTF-8
 Content-Length: 3122
 
 {
   "_links" : {
     "self" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers?page=1&amp;pageSize=100{&amp;query}",
+      "href" : "https://api.printix.net/cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers?page=1&amp;pageSize=100{&amp;query}",
       "templated" : true
     },
     "prev" : {
-      "href" : "https://api.printix.net/cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers?page=0&amp;pageSize=100{&amp;query}",
+      "href" : "https://api.printix.net/cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers?page=0&amp;pageSize=100{&amp;query}",
       "templated" : true
     }
   },
   "success" : true,
   "message" : "OK",
   "printers" : [ {
-    "id" : "550d7cb7-8e85-4626-a633-c095cc517cc7",
+    "id" : "c084954d-64d2-41ac-a289-40c84733169e",
     "name" : "Queue",
     "capabilities" : {
       "printer" : {
@@ -2318,14 +2049,14 @@ Content-Length: 3122
     },
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers/ff58e3f4-c308-42b8-89cd-9cad87bfa031/queues/550d7cb7-8e85-4626-a633-c095cc517cc7"
+        "href" : "https://api.printix.net/cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers/f0d0fb9b-0265-4017-b434-ad9d8439e1e6/queues/c084954d-64d2-41ac-a289-40c84733169e"
       },
       "submit" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers/ff58e3f4-c308-42b8-89cd-9cad87bfa031/queues/550d7cb7-8e85-4626-a633-c095cc517cc7/submit?title={title}{&amp;user,PDL}",
+        "href" : "https://api.printix.net/cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers/f0d0fb9b-0265-4017-b434-ad9d8439e1e6/queues/c084954d-64d2-41ac-a289-40c84733169e/submit?title={title}{&amp;user,PDL}",
         "templated" : true
       },
       "jobs" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/b25b2ea4-2faa-4a9b-9df2-b187958a8548/printers/ff58e3f4-c308-42b8-89cd-9cad87bfa031/queues/550d7cb7-8e85-4626-a633-c095cc517cc7/jobs{?page,pageSize}",
+        "href" : "https://api.printix.net/cloudprint/tenants/66c19345-a01c-4784-ad39-da19a43317da/printers/f0d0fb9b-0265-4017-b434-ad9d8439e1e6/queues/c084954d-64d2-41ac-a289-40c84733169e/jobs{?page,pageSize}",
         "templated" : true
       }
     }
@@ -2347,8 +2078,8 @@ Content-Length: 3122
 <h4 id="_request_9">Request:</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/3a4670a6-35f4-4988-b13d-c6ec86a82898/printers/ff972413-df7c-4646-b7c1-fa11b118d403/queues/1a6ae6e0-fc9b-45d3-a289-c06e77f54237?page=0 HTTP/1.1
-Authorization: Bearer 20946a4b-af9d-49f0-b3fb-24b361023288
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /cloudprint/tenants/fec7d7c8-77d0-45e0-a78a-2b0f29736e07/printers/a8a9becb-ec90-4446-8f84-3b374b17e0c0/queues/3ceaab36-d18d-4c1f-ad9f-de4844d7d369?page=0 HTTP/1.1
+Authorization: Bearer 3a8a559e-3765-4030-83ff-6539b31ba11f
 Accept: application/json
 Host: api.printix.net</code></pre>
 </div>
@@ -2360,7 +2091,7 @@ Host: api.printix.net</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 X-Printix-Request-ID: unmatched
-X-Printix-Trace-ID: amuQqhxJ
+X-Printix-Trace-ID: WA8U63VY
 Content-Type: application/json;charset=UTF-8
 Content-Length: 2715
 
@@ -2368,7 +2099,7 @@ Content-Length: 2715
   "success" : true,
   "message" : "OK",
   "printers" : [ {
-    "id" : "1a6ae6e0-fc9b-45d3-a289-c06e77f54237",
+    "id" : "3ceaab36-d18d-4c1f-ad9f-de4844d7d369",
     "capabilities" : {
       "printer" : {
         "media_size" : {
@@ -2432,14 +2163,14 @@ Content-Length: 2715
     },
     "_links" : {
       "self" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/3a4670a6-35f4-4988-b13d-c6ec86a82898/printers/ff972413-df7c-4646-b7c1-fa11b118d403/queues/1a6ae6e0-fc9b-45d3-a289-c06e77f54237"
+        "href" : "https://api.printix.net/cloudprint/tenants/fec7d7c8-77d0-45e0-a78a-2b0f29736e07/printers/a8a9becb-ec90-4446-8f84-3b374b17e0c0/queues/3ceaab36-d18d-4c1f-ad9f-de4844d7d369"
       },
       "submit" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/3a4670a6-35f4-4988-b13d-c6ec86a82898/printers/ff972413-df7c-4646-b7c1-fa11b118d403/queues/1a6ae6e0-fc9b-45d3-a289-c06e77f54237/submit?title={title}{&amp;user,PDL}",
+        "href" : "https://api.printix.net/cloudprint/tenants/fec7d7c8-77d0-45e0-a78a-2b0f29736e07/printers/a8a9becb-ec90-4446-8f84-3b374b17e0c0/queues/3ceaab36-d18d-4c1f-ad9f-de4844d7d369/submit?title={title}{&amp;user,PDL}",
         "templated" : true
       },
       "jobs" : {
-        "href" : "https://api.printix.net/cloudprint/tenants/3a4670a6-35f4-4988-b13d-c6ec86a82898/printers/ff972413-df7c-4646-b7c1-fa11b118d403/queues/1a6ae6e0-fc9b-45d3-a289-c06e77f54237/jobs{?page,pageSize}",
+        "href" : "https://api.printix.net/cloudprint/tenants/fec7d7c8-77d0-45e0-a78a-2b0f29736e07/printers/a8a9becb-ec90-4446-8f84-3b374b17e0c0/queues/3ceaab36-d18d-4c1f-ad9f-de4844d7d369/jobs{?page,pageSize}",
         "templated" : true
       }
     }
@@ -2460,7 +2191,7 @@ Content-Length: 2715
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-05 12:30:55 CET
+Last updated 2021-01-06 14:45:43 CET
 </div>
 </div>
 </body>
